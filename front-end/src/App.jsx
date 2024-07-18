@@ -1,11 +1,16 @@
 
-import './App.css'
+import Footer from './components/footer/footer.jsx'
+import Header from './components/header/Header.jsx'
 
 function App() {
 
   return (
     <>
-      <h1>Init</h1>
+      <Header />
+      <main>
+        <h1>Init</h1>
+      </main>
+      <Footer />
     </>
   )
 }
