@@ -78,7 +78,9 @@ header nav ul {
   gap: 2rem;
 }
 
-
+main {
+  min-height: 60vh;
+}
 
 
 
