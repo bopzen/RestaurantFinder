@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 
-export default function Header() {
+export default function Header({
+    onLogout,
+}) {
     return (
         <>
             <header>
@@ -16,12 +18,12 @@ export default function Header() {
                 <nav>
                     <Link to="/search">Search</Link>
                 </nav>
-                <nav>
+                <nav className='account-section'>
                     <ul>
                         <li><Link to="/dashboard">Dashboard</Link></li>
                         <li><Link to="/register">Register</Link></li>
                         <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/logout">Logout</Link></li>
+                        <li><div className="link-div" onClick={onLogout}>Logout</div></li>
                     </ul>
                 </nav>
 

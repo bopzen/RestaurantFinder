@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
+import { useState, useEffect } from 'react';
+
 import Footer from './components/footer/footer.jsx'
 import Header from './components/header/Header.jsx'
 import Home from './components/home/Home.jsx';
@@ -15,9 +17,22 @@ import About from './components/about/About.jsx';
 
 function App() {
 
+const [showLogout, setShowLogout] = useState(false);
+
+
+const logoutClickHandler = () => {
+  setShowLogout(true);
+}
+
+const logoutCloseHandler = () => {
+  setShowLogout(false);
+}
+
   return (
     <>
-      <Header />
+      <Header 
+        onLogout = {logoutClickHandler}
+      />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,7 +40,6 @@ function App() {
 
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
           <Route path="/dashboard" element={<Dashboard />} />
 
           <Route path="/restaurants" element={<RestaurantList />} />
@@ -37,6 +51,10 @@ function App() {
       </Routes>
       </main>
       <Footer />
+
+      {showLogout && <Logout 
+        onClose = {logoutCloseHandler}
+      />} 
     </>
   )
 }
