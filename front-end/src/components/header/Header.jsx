@@ -6,18 +6,20 @@ export default function Header() {
             <header>
                 <nav>
                     <ul>
-                        <li><Link>Home</Link></li>
-                        <li><Link>Restaurants</Link></li>
-                        <li><Link>Map</Link></li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/restaurants">Restaurants</Link></li>
+                        <li><Link to="/map">Map</Link></li>
                     </ul>
                 </nav>
                 <nav>
-                    <Link>Search</Link>
+                    <Link to="/search">Search</Link>
                 </nav>
                 <nav>
                     <ul>
-                        <li><Link>Register</Link></li>
-                        <li><Link>Login</Link></li>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        <li><Link to="/register">Register</Link></li>
+                        <li><Link to="/login">Login</Link></li>
+                        <li><Link to="/logout">Logout</Link></li>
                     </ul>
                 </nav>
 
