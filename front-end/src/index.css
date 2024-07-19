@@ -94,27 +94,32 @@ main {
   width: 60px;
 }
 
-.login-page {
+.login-page, .register-page {
   width: 100%;
 }
 
-.login-form-container {
+.login-form-container, .register-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 
 }
 
-.login-form-container form {
+.login-form-container form, .register-form-container form {
   display: flex;
   flex-direction: column;
   width: 15%;
 }
 
-.sign-up {
+.sign-up, .sign-in {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.radio {
+  display: flex;
+  justify-content: space-between;
 }
 
 
