@@ -16,14 +16,35 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* -----Resets----- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+	margin: 0;
+}
+
+ul[role='list'], ol[role='list'] {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 body {
-  background-color: #FAFAFA;
+  background-color: #f5f3f1;
 }
 
 a, .link-div {
   font-weight: 500;
-  color: black;
-  text-decoration: inherit;
+
 }
 a:hover {
   color: #d17575;
@@ -53,7 +74,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: black;
 }
 button:focus,
 button:focus-visible {
@@ -62,20 +83,29 @@ button:focus-visible {
 
 ul li {
   list-style: none;
+
 }
 
-header, footer {
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f1e4aa;
+  background-color: white;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 25%);
+  padding: 0.5rem 2rem;
 }
 
 footer {
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem;
+  background-color: #ebe6e1;
 }
 
 .footer-main {
+  width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,9 +116,12 @@ header nav ul {
   gap: 2rem;
 }
 
+.home-background img {
+  width: 100vw;
+}
+
 main {
   min-height: 60vh;
-  place-content: center;
 }
 
 .small-logo {
@@ -99,6 +132,7 @@ main {
 }
 
 .login-page, .register-page {
+  margin-top: 4rem;
   width: 100%;
 }
 
@@ -159,7 +193,7 @@ main {
   border-radius: 20px;
   background-color: white;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 50%);
   z-index: 30;
   margin-top: 50px;
 }
@@ -175,6 +209,7 @@ main {
     color: #d17575
   }
   button {
-    background-color: #d17575;
+    background-color:  #388E3C;
+    color: white;
   }
 }

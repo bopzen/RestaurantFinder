@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
 
-import Footer from './components/footer/footer.jsx'
+import Footer from './components/footer/Footer.jsx'
 import Header from './components/header/Header.jsx'
 import Home from './components/home/Home.jsx';
 import RestaurantList from './components/restaurants/RestaurantList.jsx';

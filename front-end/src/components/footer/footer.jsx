@@ -6,7 +6,7 @@ export default function Footer() {
             <footer>
                 <div className="footer-main">
                     <nav>
-                        <img className="small-logo" src="/logos/restaurant-logo-red.png" alt="restaurant-logo-red" />
+                        <img className="medium-logo" src="/logos/restaurant-logo-white.png" alt="restaurant-logo-red" />
                         <p>Restaurant Finder</p>
                     </nav>
                     <nav>
