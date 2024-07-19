@@ -4,6 +4,8 @@ export default function Header() {
     return (
         <>
             <header>
+                <img className="medium-logo" src="/logos/restaurant-logo-red.png" alt="restaurant-logo-red" />
+
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>
