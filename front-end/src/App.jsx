@@ -14,6 +14,8 @@ import Login from './components/auth/Login.jsx';
 import Logout from './components/auth/Logout.jsx';
 import Dashboard from './components/dashboard/Dashboard.jsx';
 import About from './components/about/About.jsx';
+import RestaurantDetails from './components/restaurants/RestaurantDetails.jsx';
+import Map from './components/map/Map.jsx'
 
 function App() {
 
@@ -43,6 +45,7 @@ const logoutCloseHandler = () => {
           <Route path="/dashboard" element={<Dashboard />} />
 
           <Route path="/restaurants" element={<RestaurantList />} />
+          <Route path="/restaurants/1" element={<RestaurantDetails />} />
           <Route path="/map" element={<RestaurantMap />} />
           <Route path="/search" element={<SearchResults />} />
 
