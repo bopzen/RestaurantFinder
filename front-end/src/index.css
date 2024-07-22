@@ -1,4 +1,4 @@
-@import 'https://use.fontawesome.com/releases/v5.10.2/css/all.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
 
 
 :root {
@@ -118,10 +118,13 @@ header nav ul {
 
 .home-background img {
   width: 100vw;
+  height: 100%;
 }
 
 main {
+  margin: auto;
   min-height: 60vh;
+  padding: 50px 150px;
 }
 
 .small-logo {
@@ -198,6 +201,72 @@ main {
   margin-top: 50px;
 }
 
+.restaurant-list-section {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.restaurant-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.restaurant-list-item-container h3 {
+  padding: 0.5rem;
+  color: #795548;
+}
+.restaurant-list-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 240px;
+  height: 350px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+
+
+.restaurant-avatar {
+  display: flex;
+  justify-content: center;
+  width: 240px;
+  height: 180px;
+  background-color: #eeeded;
+}
+.restaurant-avatar img {
+  height: 100%;
+}
+
+.rating {
+  width: 240px;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(255, 208, 0);
+  padding: 8px ;
+  box-shadow: 0 20px 12px -15px rgb(0 0 0 / 10%);
+}
+
+.restaurant-info {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  padding: 10px;
+  color: #737879
+}
+
+.restaurant-info div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
 
 
 @media (prefers-color-scheme: light) {
