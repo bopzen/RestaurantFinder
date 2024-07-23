@@ -15,18 +15,18 @@ export default function RestaurantDetails() {
                             <h3>RESTAURANT NAME</h3>
                             <p>Sofia, 1 Bulgaria str</p>
                             <div className="rating-details">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                                <i class="fa-regular fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star-half-stroke"></i>
+                                <i className="fa-regular fa-star"></i>
                                 <p>3.5</p>
                                 <p>(100)</p>
                             </div>
                             <div className="restaurant-info"> 
                                 <div>
-                                    <p><i class="fa-solid fa-utensils"></i></p>
-                                    <p><i class="fa-solid fa-money-bill-1-wave"></i></p>
+                                    <p><i className="fa-solid fa-utensils"></i></p>
+                                    <p><i className="fa-solid fa-money-bill-1-wave"></i></p>
                                 </div>
                                 <div>
                                     <p><b>Cuisine:</b> Italian</p>
@@ -34,9 +34,9 @@ export default function RestaurantDetails() {
                                 </div>
                             </div>
                             <div className="extras">
-                                <i class="fa-solid fa-wifi"></i>
-                                <i class="fa-solid fa-square-parking"></i>
-                                <i class="fa-regular fa-credit-card"></i>
+                                <i className="fa-solid fa-wifi"></i>
+                                <i className="fa-solid fa-square-parking"></i>
+                                <i className="fa-regular fa-credit-card"></i>
                             </div>
                         </div>
                     </div>
@@ -45,13 +45,15 @@ export default function RestaurantDetails() {
                         <h4>Working Hours</h4>
                         <table>
                             <thead>
-                                <th>Monday</th>
-                                <th>Tuesday</th>
-                                <th>Wednesday</th>
-                                <th>Thursday</th>
-                                <th>Friday</th>
-                                <th>Saturday</th>
-                                <th>Sunday</th>
+                                <tr>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                    <th>Sunday</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -61,11 +63,10 @@ export default function RestaurantDetails() {
                                     <td>11:00-23:00</td>
                                     <td>11:00-23:00</td>
                                     <td>11:00-23:00</td>
-                                    <td>Closed</td>
+                                <td>Closed</td>
                                 </tr>
-        
                             </tbody>
-                        </table>
+                            </table>
                     </div>
                 </div>
                 <div className="restaurant-map-container">

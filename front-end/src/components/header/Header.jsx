@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import Logout from '../auth/Logout';
 
-export default function Header({
-    onLogout,
-}) {
+export default function Header() {
+
+const [showLogout, setShowLogout] = useState(false);
+
+
+const logoutClickHandler = () => {
+    setShowLogout(true);
+}
+
+const logoutCloseHandler = () => {
+    setShowLogout(false);
+}
+
     return (
         <>
             <header>
@@ -23,11 +35,13 @@ export default function Header({
                         <li><Link to="/dashboard">Dashboard</Link></li>
                         <li><Link to="/register">Register</Link></li>
                         <li><Link to="/login">Login</Link></li>
-                        <li><div className="link-div" onClick={onLogout}>Logout</div></li>
+                        <li><div className="link-div" onClick={logoutClickHandler}>Logout</div></li>
                     </ul>
                 </nav>
-
             </header>
+            {showLogout && <Logout
+                onClose = {logoutCloseHandler}
+            />} 
         </>
     )
 }

@@ -18,22 +18,10 @@ import RestaurantDetails from './components/restaurants/RestaurantDetails.jsx';
 import Map from './components/map/Map.jsx'
 
 function App() {
-
-const [showLogout, setShowLogout] = useState(false);
-
-
-const logoutClickHandler = () => {
-  setShowLogout(true);
-}
-
-const logoutCloseHandler = () => {
-  setShowLogout(false);
-}
-
   return (
     <>
       <Header 
-        onLogout = {logoutClickHandler}
+
       />
       <main>
         <Routes>
@@ -55,9 +43,7 @@ const logoutCloseHandler = () => {
       </main>
       <Footer />
 
-      {showLogout && <Logout 
-        onClose = {logoutCloseHandler}
-      />} 
+      
     </>
   )
 }
