@@ -9,16 +9,13 @@ export default function RestaurantList() {
     return (
         <section className="restaurant-list-section">
             {loading && <LoadingSpinner />}
-            
-            <h1>Find the best restaurant around you</h1>
-            <div className="restaurant-list-container">
-        
-                {data && Object.values(data).map((restaurant) => (
-                    <RestaurantListItem key={restaurant._id} />
-                ))}
 
+            <h1>Find the best restaurant around you</h1>
+            <div className="restaurant-list-container">   
+                {data && Object.values(data).map((restaurant) => (
+                    <RestaurantListItem key={restaurant._id} restaurant={restaurant}/>
+                ))}
             </div>
         </section>
-
     )
 }

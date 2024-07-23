@@ -21,7 +21,6 @@ function App() {
     return (
         <>
             <Header
-
             />
             <main>
                 <Routes>
@@ -42,8 +41,6 @@ function App() {
                 </Routes>
             </main>
             <Footer />
-
-
         </>
     )
 }

@@ -1,9 +1,11 @@
-export default function RestaurantListItem() {
+export default function RestaurantListItem(
+    { restaurant }
+) {
     return (
         <div className="restaurant-list-item-container">
-            <h3>RESTAURANT NAME</h3>
+            <h3>{restaurant.name}</h3>
             <div className="restaurant-avatar">
-                <img src="/logos/restaurant-avatar.png" alt="" />
+                <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
             </div>
             <div className="rating">
                     <i className="fa-solid fa-star"></i>
@@ -19,9 +21,9 @@ export default function RestaurantListItem() {
                     <p><i className="fa-solid fa-location-dot"></i></p>
                 </div>
                 <div>
-                    <h4>Italian</h4>
-                    <p>20 to 30 lv.</p>
-                    <p>Sofia, 1 Bulgaria str</p>
+                    <h4>{restaurant.cuisine}</h4>
+                    <p>{restaurant.priceRange}</p>
+                    <p>{restaurant.address.city}, {restaurant.address.streetNumber} {restaurant.address.street} str.</p>
                 </div>
             </div>
         </div>
