@@ -18,34 +18,34 @@ import RestaurantDetails from './components/restaurants/RestaurantDetails.jsx';
 import Map from './components/map/Map.jsx'
 
 function App() {
-  return (
-    <>
-      <Header 
+    return (
+        <>
+            <Header
 
-      />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+            />
+            <main>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
 
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
 
-          <Route path="/restaurants" element={<RestaurantList />} />
-          <Route path="/restaurants/1" element={<RestaurantDetails />} />
-          <Route path="/map" element={<RestaurantMap />} />
-          <Route path="/search" element={<SearchResults />} />
+                    <Route path="/restaurants" element={<RestaurantList />} />
+                    <Route path="/restaurants/1" element={<RestaurantDetails />} />
+                    <Route path="/map" element={<RestaurantMap />} />
+                    <Route path="/search" element={<SearchResults />} />
 
-          <Route path="/not-found" element={<NotFound />} />
-          <Route path="/*" element={<NotFound />} />
-      </Routes>
-      </main>
-      <Footer />
+                    <Route path="/not-found" element={<NotFound />} />
+                    <Route path="/*" element={<NotFound />} />
+                </Routes>
+            </main>
+            <Footer />
 
-      
-    </>
-  )
+
+        </>
+    )
 }
 
 export default App

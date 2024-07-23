@@ -386,6 +386,9 @@ main {
   box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
 }
 
+.loading-spinner {
+  position: absolute;
+}
 
 
 @media (prefers-color-scheme: light) {

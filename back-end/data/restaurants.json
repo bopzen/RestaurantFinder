@@ -1,0 +1,90 @@
+{
+    "17f250f4-466c-4607-9a33-f7273b24f1b4": {
+        "_id": "17f250f4-466c-4607-9a33-f7273b24f1b4",
+        "name": "Restaurant 1",
+        "cuisine": "Italian",
+        "priceRange": "20 to 30 BGN",
+        "capacity": "100",
+        "about": "Restaurant Description",
+        "profilePictureURL": "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+        "address": {
+            "city": "Sofia",
+            "street": "Bulgaria",
+            "streetNumber": "1"
+        },
+        "geolocation": {
+            "latitude": "42.698334",
+            "longitude": "23.319941"
+        },
+        "contacts": {
+            "email": "rest1@mail.com",
+            "phoneNumber": "08888881",
+            "website": "https://rest1.com"
+        },
+        "extras": {
+            "hasWifi": "true",
+            "hasParking": "true",
+            "allowCard": "true"
+        },
+        "workingHours": {
+            "Monday": "11:00-23:00",
+            "Tuesday": "11:00-23:00",
+            "Wednesday": "11:00-23:00",
+            "Thursday": "11:00-23:00",
+            "Friday": "11:00-23:00",
+            "Saturday": "11:00-23:00",
+            "Sunday": "11:00-23:00"
+        },
+        "picturesURL": [
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg"
+        ]
+    },
+    "rdabf7e9-23be-4031-9f14-911ab6702a9d": {
+        "_id": "rdabf7e9-23be-4031-9f14-911ab6702a9d",
+        "name": "Restaurant 2",
+        "cuisine": "Bulgarian",
+        "priceRange": "10 to 30 BGN",
+        "capacity": "50",
+        "about": "Restaurant Description",
+        "profilePictureURL": "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+        "address": {
+            "city": "Sofia",
+            "street": "Pirin",
+            "streetNumber": "5"
+        },
+        "geolocation": {
+            "latitude": "42.698334",
+            "longitude": "23.319941"
+        },
+        "contacts": {
+            "email": "rest2@mail.com",
+            "phoneNumber": "08888882",
+            "website": "https://rest2.com"
+        },
+        "extras": {
+            "hasWifi": "true",
+            "hasParking": "true",
+            "allowCard": "true"
+        },
+        "workingHours": {
+            "Monday": "11:00-23:00",
+            "Tuesday": "11:00-23:00",
+            "Wednesday": "11:00-23:00",
+            "Thursday": "11:00-23:00",
+            "Friday": "11:00-23:00",
+            "Saturday": "11:00-23:00",
+            "Sunday": "11:00-23:00"
+        },
+        "picturesURL": [
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg",
+            "https://cdn3.vectorstock.com/i/1000x1000/54/17/person-gray-photo-placeholder-man-vector-24005417.jpg"
+        ]
+    }
+}
