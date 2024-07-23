@@ -1,7 +1,17 @@
-export default function RestaurantCreate() {
+export default function RestaurantCreate(
+    { onClose }
+) {
     return (
         <>
-            <h1>Restaurant Create</h1>
+            <div className="overlay">
+                <div className="backdrop" onClick={onClose}>
+                </div>
+                    <div className="modal">
+                        <h1>Add restaurant</h1>
+                            <button>Add</button>
+                            <button onClick={onClose}>Cancel</button>
+                    </div>
+            </div>
         </>
     )
 }

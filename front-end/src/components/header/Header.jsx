@@ -1,19 +1,15 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import Logout from '../auth/Logout';
+import { useModal } from '../../hooks/useModal';
 
 export default function Header() {
 
-const [showLogout, setShowLogout] = useState(false);
-
-
-const logoutClickHandler = () => {
-    setShowLogout(true);
-}
-
-const logoutCloseHandler = () => {
-    setShowLogout(false);
-}
+const {
+    isVisible: showLogout,
+    openModal: logoutClickHandler,
+    closeModal: logoutCloseHandler,
+} = useModal();
 
     return (
         <>

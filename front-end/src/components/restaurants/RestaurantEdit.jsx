@@ -1,7 +1,17 @@
-export default function RestaurantEdit() {
+export default function RestaurantEdit(
+    { onClose }
+) {
     return (
         <>
-            <h1>Restaurant Edit</h1>
+            <div className="overlay">
+                <div className="backdrop" onClick={onClose}>
+                </div>
+                    <div className="modal">
+                        <h1>Edit restaurant</h1>
+                            <button>Add</button>
+                            <button onClick={onClose}>Cancel</button>
+                    </div>
+            </div>
         </>
     )
 }

@@ -1,6 +1,6 @@
-export default function Logout({
-    onClose,
-}) {
+export default function Logout(
+    { onClose }
+) {
     return (
         <>
             <div className="overlay">
