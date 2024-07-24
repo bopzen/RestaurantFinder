@@ -4,7 +4,6 @@ import RestaurantListItem from "./RestaurantListItem";
 
 export default function RestaurantList() {
     const { data, loading, error } = useApi('http://localhost:3030/jsonstore/restaurants');
-    console.log(data);
 
     return (
         <section className="restaurant-list-section">

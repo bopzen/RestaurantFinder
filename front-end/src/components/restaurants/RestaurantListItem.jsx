@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 export default function RestaurantListItem(
     { restaurant }
 ) {
-    return (
+    return (    
         <div className="restaurant-list-item-container">
-            <h3>{restaurant.name}</h3>
+            <Link to={`/restaurants/${restaurant._id}`}><h3>{restaurant.name}</h3></Link>
             <div className="restaurant-avatar">
                 <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
             </div>

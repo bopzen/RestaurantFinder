@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 export function useApi(initialUrl, initialOptions = {}) {
     const [url, setUrl] = useState(initialUrl);
     const [options, setOptions] = useState(initialOptions);
-    const [data, setData] = useState(null);
+    const [data, setData] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -32,6 +32,7 @@ export function useApi(initialUrl, initialOptions = {}) {
             const signal = abortController.signal;
 
             fetchData(signal);
+            console.log('Fetching data')
 
             return () => {
                 abortController.abort();
@@ -39,6 +40,7 @@ export function useApi(initialUrl, initialOptions = {}) {
         }
     }, [url, options, fetchData]);
 
-    return { data, loading, error, setUrl, setOptions };
+    console.log(data)
+    return { data, loading, error, setUrl, setOptions, fetchData };
 
 };

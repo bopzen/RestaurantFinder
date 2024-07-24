@@ -1,100 +1,121 @@
 import Map from "../map/Map";
-
-
+import { useParams } from 'react-router-dom';
+import { useApi } from '../../hooks/useApi';
+import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 
 export default function RestaurantDetails() {
+    const {id} = useParams();   
+    const {data: restaurant, loading, error } = useApi(`http://localhost:3030/jsonstore/restaurants/${id}`);
+    console.log(restaurant.address?.city)
+  
+ 
     return (
-        <section className="restaurant-details">
-            <div className="restaurant-details-main">
-                <div className="restaurant-details-container">
-                    <div className="restaurant-details-top">
-                        <div className="restaurant-avatar">
-                            <img src="/logos/restaurant-avatar.png" alt="" />
-                        </div>
-                        <div className="restaurant-details-top-right">
-                            <h3>RESTAURANT NAME</h3>
-                            <p>Sofia, 1 Bulgaria str</p>
-                            <div className="rating-details">
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star-half-stroke"></i>
-                                <i className="fa-regular fa-star"></i>
-                                <p>3.5</p>
-                                <p>(100)</p>
-                            </div>
-                            <div className="restaurant-info"> 
-                                <div>
-                                    <p><i className="fa-solid fa-utensils"></i></p>
-                                    <p><i className="fa-solid fa-money-bill-1-wave"></i></p>
+        <>
+            {loading && <LoadingSpinner />}
+            <section className="restaurant-details">
+                <div className="restaurant-details-main">
+                    <div className="restaurant-details-container">
+                        <div className="restaurant-details-top">
+                            <div className="restaurant-top-left">
+                                <div className="restaurant-avatar">
+                                    <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
                                 </div>
-                                <div>
-                                    <p><b>Cuisine:</b> Italian</p>
-                                    <p><b>Price range:</b> 20 to 30 lv.</p>
+                                <div className="restaurant-contact-details">
+                                    <div>
+                                        <p><i className="fa-solid fa-phone"></i></p>
+                                        <p><i className="fa-solid fa-envelope"></i></p>
+                                        <p><i className="fa-solid fa-globe"></i></p>
+                                    </div>
+                                    <div>
+                                        <p>{restaurant.contacts?.phoneNumber}</p>
+                                        <p>{restaurant.contacts?.email}</p>
+                                        <a href={restaurant.contacts?.website} target="_blank"><p>{restaurant.contacts?.website}</p></a> 
+                                    </div>     
                                 </div>
                             </div>
-                            <div className="extras">
-                                <i className="fa-solid fa-wifi"></i>
-                                <i className="fa-solid fa-square-parking"></i>
-                                <i className="fa-regular fa-credit-card"></i>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className="restaurant-details-bottom">
-                        <h4>Working Hours</h4>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Monday</th>
-                                    <th>Tuesday</th>
-                                    <th>Wednesday</th>
-                                    <th>Thursday</th>
-                                    <th>Friday</th>
-                                    <th>Saturday</th>
-                                    <th>Sunday</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>11:00-23:00</td>
-                                    <td>11:00-23:00</td>
-                                    <td>11:00-23:00</td>
-                                    <td>11:00-23:00</td>
-                                    <td>11:00-23:00</td>
-                                    <td>11:00-23:00</td>
-                                <td>Closed</td>
-                                </tr>
-                            </tbody>
+                            <div className="restaurant-details-top-right">
+                                <h3>{restaurant.name}</h3>
+                                <p>{restaurant.address?.city}, {restaurant.address?.streetNumber} {restaurant.address?.street} str.</p>
+                                
+                                <div className="rating-details">
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star"></i>
+                                    <i className="fa-solid fa-star-half-stroke"></i>
+                                    <i className="fa-regular fa-star"></i>
+                                    <p>3.5</p>
+                                    <p>(100)</p>
+                                </div>
+                                <div className="restaurant-info"> 
+                                    <div>
+                                        <p><i className="fa-solid fa-utensils"></i></p>
+                                        <p><i className="fa-solid fa-money-bill-1-wave"></i></p>
+                                        <p><i className="fa-solid fa-people-group"></i></p>
+                                    </div>
+                                    <div>
+                                        <p><b>Cuisine:</b> {restaurant.cuisine}</p>
+                                        <p><b>Price range:</b> {restaurant.priceRange}</p>
+                                        <p><b>Capacity:</b> {restaurant.capacity}</p>
+                                    </div>
+                                </div>
+                                <div className="extras">
+                                    {restaurant.extras?.hasWifi && <i className="fa-solid fa-wifi"></i>}
+                                    
+                                    {restaurant.extras?.hasParking && <i className="fa-solid fa-square-parking"></i>}
+                                    {restaurant.extras?.acceptCard && <i className="fa-regular fa-credit-card"></i>}
+                                </div>
+                                
+                            </div>
+                        </div>
+
+
+                        <div className="restaurant-details-bottom">
+                            <h4>Working Hours</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Monday</th>
+                                        <th>Tuesday</th>
+                                        <th>Wednesday</th>
+                                        <th>Thursday</th>
+                                        <th>Friday</th>
+                                        <th>Saturday</th>
+                                        <th>Sunday</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{restaurant.workingHours?.Monday}</td>
+                                        <td>{restaurant.workingHours?.Tuesday}</td>
+                                        <td>{restaurant.workingHours?.Wednesday}</td>
+                                        <td>{restaurant.workingHours?.Thursday}</td>
+                                        <td>{restaurant.workingHours?.Friday}</td>
+                                        <td>{restaurant.workingHours?.Saturday}</td>
+                                        <td>{restaurant.workingHours?.Sunday}</td>
+                                    </tr>
+                                </tbody>
                             </table>
+                        </div>
                     </div>
-                </div>
-                <div className="restaurant-map-container">
-                    <Map />
-                </div>
-            </div>    
-            <div className="restaurant-pictures-container">
-                <div className="restaurant-photo-container">
-                    <img src="/images/restaurant-interior.jpg" alt="restaurant-pic" />
-                </div>
-                <div className="restaurant-photo-container">
-                    <img src="/images/restaurant-interior.jpg" alt="restaurant-pic" />
-                </div>
-                <div className="restaurant-photo-container">
-                    <img src="/images/restaurant-interior.jpg" alt="restaurant-pic" />
-                </div>
-                <div className="restaurant-photo-container">
-                    <img src="/images/restaurant-interior.jpg" alt="restaurant-pic" />
-                </div>
-                <div className="restaurant-photo-container">
-                    <img src="/images/restaurant-interior.jpg" alt="restaurant-pic" />
-                </div>
+                    <div className="restaurant-map-container">
+                        <Map />
+                    </div>
+                </div>    
+                <div className="restaurant-pictures-container">
+                    {restaurant.picturesURL && restaurant.picturesURL.map((pic, index) => (
+                        <div key={index} className="restaurant-photo-container">
+                            <img src={pic} alt={`restaurant-pic-${index}`} />
+                        </div>
+                    ))}
 
-            </div>
-            <div className="restaurant-about-container">
-                <h2>About RESTAURANT NAME</h2>
-                <p>Welcome to Gourmet Haven, a culinary paradise nestled in the heart of the city. Our restaurant is renowned for its eclectic fusion of global flavors, artfully crafted to create a memorable dining experience. With a menu that changes seasonally, we source the freshest ingredients from local farms and international markets, ensuring every dish bursts with vibrant, authentic flavors. Step into our elegantly designed space, where contemporary décor meets rustic charm, creating a warm and inviting atmosphere. Whether you're dining with friends, family, or that special someone, Gourmet Haven offers the perfect setting for any occasion. Our knowledgeable and attentive staff are dedicated to providing impeccable service, ensuring your visit is nothing short of extraordinary. Indulge in our signature dishes, such as the truffle-infused risotto, the succulent lamb chops marinated in exotic spices, or our decadent chocolate fondant. Complement your meal with a selection from our extensive wine list, featuring both local vintages and international favorites. At Gourmet Haven, we believe that dining is not just about food; it's about creating lasting memories. Join us for an unforgettable culinary journey that will delight your taste buds and leave you craving more. Book your table today and discover why Gourmet Haven is the city's premier dining destination.</p>
-            </div>
-        </section>
+                </div>
+                <div className="restaurant-about-container">
+                    <h2>About {restaurant.name}</h2>
+                    <p>{restaurant.about}</p>
+                </div>
+            </section>
+        </>
+        
     )
 }

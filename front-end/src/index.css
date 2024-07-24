@@ -260,6 +260,9 @@ main {
   padding: 10px;
   color: #737879
 }
+.restaurant-info i {
+  color: #795548;
+}
 
 .restaurant-info div {
   display: flex;
@@ -273,7 +276,7 @@ main {
   flex-direction: column;
   justify-content: space-between;
   width: 600px;
-  height: 300px;
+  height: 360px;
   padding: 1rem;
   background-color: white;
   border-radius: 6px;
@@ -291,6 +294,18 @@ main {
   flex-direction: column;
   width: 50%;
   align-items: center;
+}
+
+.restaurant-contact-details {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  padding: 10px;
+  color: #737879
+}
+.restaurant-contact-details i {
+  color: #D32F2F;
+  font-size: 16px;
 }
 
 
@@ -328,21 +343,21 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
-  font-size: 14px;
-
+  font-size: 12px;
 }
 
 .restaurant-details-bottom table {
   width: 100%;
   text-align: center;
 }
+.restaurant-details-bottom table td:not(:first-of-type) {
+  border-left: 1px solid #F57C00;
+}
 
 .restaurant-pictures-container {
   margin: 4px;
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .restaurant-photo-container {
@@ -361,7 +376,7 @@ main {
 .restaurant-map-container {
   min-width: 300px;
   width: 600px;
-  height: 300px;
+  height: 360px;
 }
 
 .restaurant-details-main {
