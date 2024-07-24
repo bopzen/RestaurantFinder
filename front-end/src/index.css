@@ -379,15 +379,55 @@ main {
   height: 360px;
 }
 
+.restaurant-avatar-map {
+  width: 100px;
+}
+
+.restaurant-avatar-map img {
+  width: 100%;
+}
+
+.rating-map {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: rgb(255, 208, 0);
+  padding: 4px ;
+  box-shadow: 0 10px 20px -8px rgb(0 0 0 / 20%);
+}
+.details-map {
+  text-align: center;
+  padding-top: 8px;
+  line-height: 0;
+  font-size: 11px;
+}
+.details-map p {
+  margin: 0.5rem;
+}
+.details-map h4 {
+  font-size: 14px;;
+}
+
+.popup-map {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
 .restaurant-details-main {
   display: flex;
   justify-content: flex-start;
   gap: 8px;
 }
+.popup-info-wrapper {
+  display: flex;
+}
 
 .restaurant-about-container h2 {
   margin-bottom: 1rem;
 }
+
 
 .restaurant-about-container {
   padding: 2rem;

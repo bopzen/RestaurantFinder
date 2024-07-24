@@ -6,9 +6,7 @@ import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 export default function RestaurantDetails() {
     const {id} = useParams();   
     const {data: restaurant, loading, error } = useApi(`http://localhost:3030/jsonstore/restaurants/${id}`);
-    console.log(restaurant.address?.city)
-  
- 
+
     return (
         <>
             {loading && <LoadingSpinner />}
@@ -98,9 +96,14 @@ export default function RestaurantDetails() {
                             </table>
                         </div>
                     </div>
-                    <div className="restaurant-map-container">
-                        <Map />
-                    </div>
+                    {restaurant.geolocation && 
+                        <div className="restaurant-map-container">
+                            <Map 
+                                restaurant={restaurant} 
+                            />
+                        </div>           
+                    }
+
                 </div>    
                 <div className="restaurant-pictures-container">
                     {restaurant.picturesURL && restaurant.picturesURL.map((pic, index) => (

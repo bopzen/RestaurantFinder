@@ -1,7 +1,7 @@
 {
     "17f250f4-466c-4607-9a33-f7273b24f1b4": {
         "_id": "17f250f4-466c-4607-9a33-f7273b24f1b4",
-        "name": "Restaurant 1",
+        "name": "Restaurant Restaurant Restaurant 1",
         "cuisine": "Italian",
         "priceRange": "20 to 30 BGN",
         "capacity": 100,
@@ -13,8 +13,8 @@
             "streetNumber": "1"
         },
         "geolocation": {
-            "latitude": "42.698334",
-            "longitude": "23.319941"
+            "latitude": 42.698334,
+            "longitude": 23.319941
         },
         "contacts": {
             "email": "rest1@mail.com",
@@ -57,8 +57,8 @@
             "streetNumber": "5"
         },
         "geolocation": {
-            "latitude": "42.698334",
-            "longitude": "23.319941"
+            "latitude": 42.698334,
+            "longitude": 23.319941
         },
         "contacts": {
             "email": "rest2@mail.com",
