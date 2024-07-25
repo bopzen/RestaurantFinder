@@ -1,6 +1,15 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import L from 'leaflet';
+
+const customIcon = new L.Icon({
+    iconUrl: '../logos/restaurant-logo-red.png',
+    iconSize: [40, 40],
+    iconAnchor: [16, 16],
+    popupAnchor: [5, -20]
+});
+
 export default function Map(
     { restaurant }
 ) {
@@ -14,7 +23,7 @@ export default function Map(
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={position}>
+                <Marker position={position} icon={customIcon}>
                     <Popup>
                         <div className="popup-map">
                             <h3>{restaurant.name}</h3>

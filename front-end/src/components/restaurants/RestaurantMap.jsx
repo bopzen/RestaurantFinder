@@ -1,9 +1,97 @@
-import Map from "../map/Map";
+import { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import { BASE_API_URL } from "../../constants/constants";
+import LoadingSpinner from '../loading-spinner/LoadingSpinner';
+
+import L from 'leaflet';
+
+const customIcon = new L.Icon({
+    iconUrl: './logos/restaurant-logo-red.png',
+    iconSize: [40, 40],
+    iconAnchor: [16, 16],
+    popupAnchor: [5, -20]
+});
+
 
 export default function RestaurantMap() {
+    const [restaurants, setRestaurants] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchRestaurants = async () => {
+            try {
+                const response = await fetch(`${BASE_API_URL}/restaurants`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                setRestaurants(Object.values(data));
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchRestaurants();
+    }, []);
+
+    console.log(restaurants)
+    if (loading) {
+        return <div><LoadingSpinner /></div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
+    const positions = restaurants.map(r => [Number(r.geolocation.latitude), Number(r.geolocation.longitude)]);
+    const center = positions.length > 0
+        ? [
+            positions.reduce((acc, [lat]) => acc + lat, 0) / positions.length,
+            positions.reduce((acc, [, lng]) => acc + lng, 0) / positions.length
+        ]
+        : [42.6977, 23.3219];
+
     return (
         <div className="big-map">
-            <Map/>
+            <div className='leaflet-container'>
+                <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
+                    <TileLayer
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    {restaurants.map(restaurant => (
+                        <Marker
+                            key={restaurant._id}
+                            position={[restaurant.geolocation.latitude, restaurant.geolocation.longitude]}
+                            icon={customIcon}
+                        >
+                            <Popup>
+                                <div className="popup-map">
+                                    <h3>{restaurant.name}</h3>
+                                    <div className="popup-info-wrapper">
+                                        <div>
+                                            <div className="restaurant-avatar-map">
+                                                <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
+                                            </div>
+                                        </div>
+                                        <div className="details-map">
+                                            <h4><i className="fa-solid fa-utensils"></i> {restaurant.cuisine}</h4>
+                                            <p><i className="fa-solid fa-money-bill-1-wave"></i> {restaurant.priceRange}</p>
+                                            <p><i className="fa-solid fa-location-dot"></i> {restaurant.address.city}, {restaurant.address.streetNumber} {restaurant.address.street} str.</p>
+                                            <p><i className="fa-solid fa-globe"></i><a href={restaurant.contacts.website} target="_blank" rel="noopener noreferrer"> {restaurant.contacts?.website}</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Popup>
+                        </Marker>
+                    ))}
+                </MapContainer>
+            </div>
         </div>
-    )
-}
+        
+    );
+};
