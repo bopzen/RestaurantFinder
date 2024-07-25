@@ -66,8 +66,6 @@ export default function RestaurantEdit(
 
         fetchRestaurant();
     }, [restaurantId]);
-
-
     
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;

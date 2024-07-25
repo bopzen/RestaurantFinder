@@ -269,8 +269,19 @@ main {
   margin: 0;
 }
 
-.form-cancel-btn {
+.form-cancel-btn, .delete-btn {
   background-color: #D32F2F;
+}
+
+.delete-modal {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.delete-modal h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 
