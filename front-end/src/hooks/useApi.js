@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 
-export function useApi(initialUrl, initialOptions = {}) {
+export function useApi(initialUrl, initialOptions = {}, initialData) {
     const [url, setUrl] = useState(initialUrl);
     const [options, setOptions] = useState(initialOptions);
-    const [data, setData] = useState({});
+    const [data, setData] = useState(initialData);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 

@@ -5,11 +5,22 @@ import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 
 export default function RestaurantDetails() {
     const {id} = useParams();   
-    const {data: restaurant, loading, error } = useApi(`http://localhost:3030/jsonstore/restaurants/${id}`);
+    const {data: restaurant, loading, error } = useApi(`http://localhost:3030/jsonstore/restaurants/${id}`, {}, null);
+
+    if (loading) {
+        return <div><LoadingSpinner /></div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
+    if (!restaurant || Object.keys(restaurant) == 0) {
+        return <div>No restaurant data available</div>;
+    }
 
     return (
         <>
-            {loading && <LoadingSpinner />}
             <section className="restaurant-details">
                 <div className="restaurant-details-main">
                     <div className="restaurant-details-container">
@@ -25,16 +36,16 @@ export default function RestaurantDetails() {
                                         <p><i className="fa-solid fa-globe"></i></p>
                                     </div>
                                     <div>
-                                        <p>{restaurant.contacts?.phoneNumber}</p>
-                                        <p>{restaurant.contacts?.email}</p>
-                                        <a href={restaurant.contacts?.website} target="_blank"><p>{restaurant.contacts?.website}</p></a> 
+                                        <p>{restaurant.contacts.phoneNumber}</p>
+                                        <p>{restaurant.contacts.email}</p>
+                                        <a href={restaurant.contacts.website} target="_blank"><p>{restaurant.contacts.website}</p></a> 
                                     </div>     
                                 </div>
                             </div>
 
                             <div className="restaurant-details-top-right">
                                 <h3>{restaurant.name}</h3>
-                                <p>{restaurant.address?.city}, {restaurant.address?.streetNumber} {restaurant.address?.street} str.</p>
+                                <p>{restaurant.address.city}, {restaurant.address.streetNumber} {restaurant.address.street} str.</p>
                                 
                                 <div className="rating-details">
                                     <i className="fa-solid fa-star"></i>
@@ -58,15 +69,14 @@ export default function RestaurantDetails() {
                                     </div>
                                 </div>
                                 <div className="extras">
-                                    {restaurant.extras?.hasWifi && <i className="fa-solid fa-wifi"></i>}
+                                    {restaurant.extras.hasWifi && <i className="fa-solid fa-wifi"></i>}
                                     
-                                    {restaurant.extras?.hasParking && <i className="fa-solid fa-square-parking"></i>}
-                                    {restaurant.extras?.acceptCard && <i className="fa-regular fa-credit-card"></i>}
+                                    {restaurant.extras.hasParking && <i className="fa-solid fa-square-parking"></i>}
+                                    {restaurant.extras.acceptCard && <i className="fa-regular fa-credit-card"></i>}
                                 </div>
                                 
                             </div>
                         </div>
-
 
                         <div className="restaurant-details-bottom">
                             <h4>Working Hours</h4>
@@ -84,25 +94,25 @@ export default function RestaurantDetails() {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{restaurant.workingHours?.Monday}</td>
-                                        <td>{restaurant.workingHours?.Tuesday}</td>
-                                        <td>{restaurant.workingHours?.Wednesday}</td>
-                                        <td>{restaurant.workingHours?.Thursday}</td>
-                                        <td>{restaurant.workingHours?.Friday}</td>
-                                        <td>{restaurant.workingHours?.Saturday}</td>
-                                        <td>{restaurant.workingHours?.Sunday}</td>
+                                        <td>{restaurant.workingHours.Monday}</td>
+                                        <td>{restaurant.workingHours.Tuesday}</td>
+                                        <td>{restaurant.workingHours.Wednesday}</td>
+                                        <td>{restaurant.workingHours.Thursday}</td>
+                                        <td>{restaurant.workingHours.Friday}</td>
+                                        <td>{restaurant.workingHours.Saturday}</td>
+                                        <td>{restaurant.workingHours.Sunday}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    {restaurant.geolocation && 
-                        <div className="restaurant-map-container">
-                            <Map 
-                                restaurant={restaurant} 
-                            />
-                        </div>           
-                    }
+
+                    <div className="restaurant-map-container">
+                        <Map 
+                            restaurant={restaurant} 
+                        />
+                    </div>           
+                    
 
                 </div>    
                 <div className="restaurant-pictures-container">
