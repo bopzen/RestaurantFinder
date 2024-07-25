@@ -2,6 +2,7 @@ import RestaurantCreate from '../restaurants/RestaurantCreate';
 import RestaurantEdit from '../restaurants/RestaurantEdit';
 import RestaurantDelete from '../restaurants/RestaurantDelete';
 import { useModal } from '../../hooks/useModal';
+import { useState } from 'react';
 
 export default function Dashboard() {
 
@@ -23,6 +24,17 @@ const {
     closeModal: deleteRestaurantCloseHandler,
 } = useModal();
 
+const [restaurantId, setRestaurantId] = useState(null);
+
+const handleEditOpenModal = (id) => {
+    setRestaurantId(id);
+    editRestaurantClickHandler();
+};
+
+const handleEditCloseModal = () => {
+    editRestaurantCloseHandler();
+    setRestaurantId(null);
+};
 
     return (
         <>
@@ -31,7 +43,7 @@ const {
                 <h2>My Restaurants</h2>
 
                 <ul>
-                    <li>Restaurant 1 <button onClick={editRestaurantClickHandler}>Edit</button> <button onClick={deleteRestaurantClickHandler}>Delete</button></li>
+                    <li>Restaurant 1 <button onClick={() => handleEditOpenModal('e20d1b26-4d98-4e92-aeb8-6656d4b013c7')}>Edit</button> <button onClick={deleteRestaurantClickHandler}>Delete</button></li>
                     <li>Restaurant 2 <button onClick={editRestaurantClickHandler}>Edit</button> <button onClick={deleteRestaurantClickHandler}>Delete</button></li>
                     <li>Restaurant 3 <button onClick={editRestaurantClickHandler}>Edit</button> <button onClick={deleteRestaurantClickHandler}>Delete</button></li>
                 </ul>
@@ -45,7 +57,8 @@ const {
             />}
 
             { showEditRestaurant && <RestaurantEdit
-                onClose={editRestaurantCloseHandler}
+                restaurantId={restaurantId}
+                onClose={handleEditCloseModal}
             />}
 
             { showDeleteRestaurant && <RestaurantDelete 
