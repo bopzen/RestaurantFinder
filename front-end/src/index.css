@@ -74,7 +74,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: black;
+  box-shadow: 0 0px 12px rgb(0 0 0 / 80%);
 }
 button:focus,
 button:focus-visible {
@@ -203,6 +203,76 @@ main {
   z-index: 30;
   margin-top: 50px;
 }
+
+.create-restaurant-modal {
+  font-size: 14px;
+  padding: 0;
+}
+
+.create-restaurant-modal h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  box-shadow: 0 20px 20px -8px rgb(0 0 0 / 10%);
+}
+
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+
+}
+.create-form-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-form-left, .create-form-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-address, .form-geolocation, .form-contacts, .form-working-hours {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.create-form label {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.create-form input, .create-form textarea {
+  width: 200px;
+  border: 1px solid rgb(160, 160, 160);
+  border-radius: 3px;
+}
+
+.create-form-pictures {
+  margin-top: 8px;
+}
+#picture-input {
+  width: 400px;
+}
+
+.create-form-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+.create-form-buttons button {
+  width: 140px;
+  margin: 0;
+}
+
+.form-cancel-btn {
+  background-color: #D32F2F;
+}
+
 
 .restaurant-list-section {
   margin: auto;
