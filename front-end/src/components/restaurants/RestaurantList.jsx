@@ -1,9 +1,10 @@
+import { BASE_API_URL } from "../../constants/constants";
 import { useApi } from "../../hooks/useApi";
 import LoadingSpinner from "../loading-spinner/LoadingSpinner";
 import RestaurantListItem from "./RestaurantListItem";
 
 export default function RestaurantList() {
-    const { data, loading, error } = useApi('http://localhost:3030/jsonstore/restaurants', {}, null);
+    const { data, loading, error } = useApi(`${BASE_API_URL}/restaurants`, {}, null);
 
     if (loading) {
         return <div><LoadingSpinner /></div>;

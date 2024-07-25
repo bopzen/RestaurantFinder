@@ -2,10 +2,11 @@ import Map from "../map/Map";
 import { useParams } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
+import { BASE_API_URL } from "../../constants/constants";
 
 export default function RestaurantDetails() {
     const {id} = useParams();   
-    const {data: restaurant, loading, error } = useApi(`http://localhost:3030/jsonstore/restaurants/${id}`, {}, null);
+    const {data: restaurant, loading, error } = useApi(`${BASE_API_URL}/restaurants/${id}`, {}, null);
 
     if (loading) {
         return <div><LoadingSpinner /></div>;

@@ -176,10 +176,13 @@ main {
   right: 0;
   bottom: 0;
   z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
   height: 100vh;
   left: 0;
   position: fixed;
@@ -193,7 +196,7 @@ main {
   position: absolute;
   max-height: 90vh;
   margin: auto;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: white;
   padding: 1rem;
   box-shadow: 0 2px 8px rgb(0 0 0 / 50%);

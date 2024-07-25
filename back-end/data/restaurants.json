@@ -1,7 +1,7 @@
 {
     "17f250f4-466c-4607-9a33-f7273b24f1b4": {
         "_id": "17f250f4-466c-4607-9a33-f7273b24f1b4",
-        "name": "Restaurant Restaurant Restaurant 1",
+        "name": "Restaurant 1",
         "cuisine": "Italian",
         "priceRange": "20 to 30 BGN",
         "capacity": 100,
@@ -13,8 +13,8 @@
             "streetNumber": "1"
         },
         "geolocation": {
-            "latitude": 42.698334,
-            "longitude": 23.319941
+            "latitude": 42.68148220109838, 
+            "longitude": 23.31965248147787
         },
         "contacts": {
             "email": "rest1@mail.com",
@@ -54,11 +54,11 @@
         "address": {
             "city": "Sofia",
             "street": "Pirin",
-            "streetNumber": "5"
+            "streetNumber": "80"
         },
         "geolocation": {
-            "latitude": 42.698334,
-            "longitude": 23.319941
+            "latitude": 42.66380870038354,
+            "longitude": 23.285878981989413
         },
         "contacts": {
             "email": "rest2@mail.com",

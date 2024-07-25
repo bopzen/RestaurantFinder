@@ -44,6 +44,5 @@ export default function Map(
                 </Marker>
             </MapContainer>
         </div>
-
     )
 }
