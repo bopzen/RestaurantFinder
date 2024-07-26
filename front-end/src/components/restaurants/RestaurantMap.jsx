@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import { BASE_API_URL } from "../../constants/constants";
+import { Link } from 'react-router-dom';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+
+import { BASE_API_URL, SOFIA_COORDINATES } from "../../constants/constants";
 
 const customIcon = new L.Icon({
     iconUrl: './logos/restaurant-logo-red.png',
@@ -38,7 +40,6 @@ export default function RestaurantMap() {
         fetchRestaurants();
     }, []);
 
-    console.log(restaurants)
     if (loading) {
         return <div><LoadingSpinner /></div>;
     }
@@ -53,7 +54,7 @@ export default function RestaurantMap() {
             positions.reduce((acc, [lat]) => acc + lat, 0) / positions.length,
             positions.reduce((acc, [, lng]) => acc + lng, 0) / positions.length
         ]
-        : [42.6977, 23.3219];
+        : SOFIA_COORDINATES;
 
     return (
         <div className="big-map">
@@ -71,7 +72,7 @@ export default function RestaurantMap() {
                         >
                             <Popup>
                                 <div className="popup-map">
-                                    <h3>{restaurant.name}</h3>
+                                    <Link to={`/restaurants/${restaurant._id}`}><h3>{restaurant.name}</h3></Link>
                                     <div className="popup-info-wrapper">
                                         <div>
                                             <div className="restaurant-avatar-map">

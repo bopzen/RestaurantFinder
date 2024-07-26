@@ -23,3 +23,5 @@ export const PRICE_RANGES =
         '40 to 50 BGN',
         '50 to 80 BGN'
     ]
+
+export const SOFIA_COORDINATES = [ 42.6977, 23.3219 ]
