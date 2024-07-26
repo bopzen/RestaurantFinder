@@ -78,6 +78,13 @@ export default function RestaurantMap() {
                                             <div className="restaurant-avatar-map">
                                                 <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
                                             </div>
+                                            <div className="rating-map">
+                                                <i className="fa-solid fa-star"></i>
+                                                <i className="fa-solid fa-star"></i>
+                                                <i className="fa-solid fa-star"></i>
+                                                <i className="fa-solid fa-star-half-stroke"></i>
+                                                <i className="fa-regular fa-star"></i>
+                                            </div>
                                         </div>
                                         <div className="details-map">
                                             <h4><i className="fa-solid fa-utensils"></i> {restaurant.cuisine}</h4>

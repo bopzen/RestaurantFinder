@@ -30,7 +30,7 @@ export default function Footer() {
                 </div>
 
                 <div className='footer-bottom'>
-                    <p>© 2024 BOPZEN | SoftUni React Final Project Defense | Restaurant Finder App</p>
+                    <p>© 2024 BOPZEN | RestaurantFinder | SoftUni React Final Project Defense | Restaurant Finder App</p>
                 </div>
             </footer>
         </>
