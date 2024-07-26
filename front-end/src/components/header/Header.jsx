@@ -14,8 +14,15 @@ const {
     return (
         <>
             <header>
-                <img className="medium-logo" src="/logos/restaurant-logo-red.png" alt="restaurant-logo-red" />
-
+                <Link to="/">
+                    <div className="header-logo">
+                        <img className="medium-logo" src="/logos/restaurant-logo-red.png" alt="restaurant-logo-red" />
+                        <div>
+                            <p>Restaurant</p>
+                            <p>Finder</p>
+                        </div>               
+                    </div>
+                </Link>
                 <nav>
                     <ul>
                         <li><Link to="/">Home</Link></li>

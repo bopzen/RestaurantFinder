@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
 
 
@@ -93,6 +97,31 @@ header {
   background-color: white;
   box-shadow: 0 4px 8px rgb(0 0 0 / 25%);
   padding: 0.5rem 2rem;
+  font-size: 18px;
+}
+
+header nav ul {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  font-family: "Dancing Script";
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.header-logo div {
+  line-height: 1;
+  color: #dc3c46;
+}
+
+.header-logo div :first-child {
+  font-size: 22px;
+  font-weight: 600;
+  color:#795548;
 }
 
 footer {
@@ -102,6 +131,7 @@ footer {
   align-items: center;
   padding: 2rem 2rem;
   background-color: #ebe6e1;
+  color:#795548;
 }
 
 .footer-main {
@@ -111,9 +141,46 @@ footer {
   align-items: center;
 }
 
-header nav ul {
+.footer-logo {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  font-family: "Dancing Script";
+  font-size: 28px;
+  font-weight: 800;
+  color: black;
+}
+.footer-logo img {
+  width: 50px;
+}
+
+.footer-logo div {
+  line-height: 1;
+}
+.footer-logo div :first-child {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.footer-social-links {
+  display: flex;
+  font-size: 30px;
+  gap: 12px;
+}
+
+.fa-github {
+  color: black;
+}
+
+.fa-facebook {
+ color: #1877F2; 
+}
+
+.fa-linkedin {
+  color: #0077B5;
+}
+
+.footer-bottom {
+  font-size: 14px;
 }
 
 .home-background img {
@@ -454,7 +521,7 @@ main {
 }
 
 .big-map {
-  width: 800px;
+  width: 100%;
   height: 600px;
 }
 .restaurant-map-container {
