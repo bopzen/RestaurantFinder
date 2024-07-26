@@ -358,6 +358,7 @@ main {
   align-items: center;
   gap: 30px;
 }
+
 .restaurant-list-container {
   display: flex;
   flex-wrap: wrap;
@@ -494,6 +495,9 @@ main {
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
+}
+.restaurant-details-bottom h4 {
+  font-size: 14px;
 }
 
 .restaurant-details-bottom table {
