@@ -6,75 +6,78 @@ import { useState } from 'react';
 
 export default function Dashboard() {
 
-const {
-    isVisible: showCreateRestaurant,
-    openModal: createRestaurantClickHandler,
-    closeModal: createRestaurantCloseHandler,
-} = useModal();
+    const {
+        isVisible: showCreateRestaurant,
+        openModal: createRestaurantClickHandler,
+        closeModal: createRestaurantCloseHandler,
+    } = useModal();
 
-const {
-    isVisible: showEditRestaurant,
-    openModal: editRestaurantClickHandler,
-    closeModal: editRestaurantCloseHandler,
-} = useModal();
+    const {
+        isVisible: showEditRestaurant,
+        openModal: editRestaurantClickHandler,
+        closeModal: editRestaurantCloseHandler,
+    } = useModal();
 
-const {
-    isVisible: showDeleteRestaurant,
-    openModal: deleteRestaurantClickHandler,
-    closeModal: deleteRestaurantCloseHandler,
-} = useModal();
+    const {
+        isVisible: showDeleteRestaurant,
+        openModal: deleteRestaurantClickHandler,
+        closeModal: deleteRestaurantCloseHandler,
+    } = useModal();
 
-const [restaurantId, setRestaurantId] = useState(null);
+    const [restaurantId, setRestaurantId] = useState(null);
 
-const handleEditOpenModal = (id) => {
-    setRestaurantId(id);
-    editRestaurantClickHandler();
-};
+    const handleEditOpenModal = (id) => {
+        setRestaurantId(id);
+        editRestaurantClickHandler();
+    };
 
-const handleEditCloseModal = () => {
-    editRestaurantCloseHandler();
-    setRestaurantId(null);
-};
+    const handleEditCloseModal = () => {
+        editRestaurantCloseHandler();
+        setRestaurantId(null);
+    };
 
-const handleDeletOpeneModal = (id) => {
-    setRestaurantId(id);
-    deleteRestaurantClickHandler();
-};
+    const handleDeletOpeneModal = (id) => {
+        setRestaurantId(id);
+        deleteRestaurantClickHandler();
+    };
 
-const handleDeleteCloseModal = () => {
-    deleteRestaurantCloseHandler();
-    setRestaurantId(null);
-};
+    const handleDeleteCloseModal = () => {
+        deleteRestaurantCloseHandler();
+        setRestaurantId(null);
+    };
 
     return (
         <>
-            <h1>Dashboard</h1>
-            <div className="my-restaurants">
-                <h2>My Restaurants</h2>
+            <section className="dashboard">
+                <h1>Dashboard</h1>
+                <div className="my-restaurants">
+                    <h2>My Restaurants</h2>
 
-                <ul>
-                    <li>Restaurant 1 <button onClick={() => handleEditOpenModal('e20d1b26-4d98-4e92-aeb8-6656d4b013c7')}>Edit</button> <button className="delete-btn" onClick={() => handleDeletOpeneModal('e20d1b26-4d98-4e92-aeb8-6656d4b013c7')}>Delete</button></li>
-                    <li>Restaurant 2 <button onClick={editRestaurantClickHandler}>Edit</button> <button className="delete-btn" onClick={deleteRestaurantClickHandler}>Delete</button></li>
-                    <li>Restaurant 3 <button onClick={editRestaurantClickHandler}>Edit</button> <button className="delete-btn" onClick={deleteRestaurantClickHandler}>Delete</button></li>
-                </ul>
+                    <ul>
+                        <li>Restaurant 1 <button onClick={() => handleEditOpenModal('e20d1b26-4d98-4e92-aeb8-6656d4b013c7')}>Edit</button> <button className="delete-btn" onClick={() => handleDeletOpeneModal('e20d1b26-4d98-4e92-aeb8-6656d4b013c7')}>Delete</button></li>
+                        <li>Restaurant 2 <button onClick={editRestaurantClickHandler}>Edit</button> <button className="delete-btn" onClick={deleteRestaurantClickHandler}>Delete</button></li>
+                        <li>Restaurant 3 <button onClick={editRestaurantClickHandler}>Edit</button> <button className="delete-btn" onClick={deleteRestaurantClickHandler}>Delete</button></li>
+                    </ul>
 
-            </div>
-            
-            <button onClick={createRestaurantClickHandler}>Add new restaurant</button>
+                </div>
 
-            { showCreateRestaurant && <RestaurantCreate 
-                onClose={createRestaurantCloseHandler}
-            />}
+                <button onClick={createRestaurantClickHandler}>Add new restaurant</button>
 
-            { showEditRestaurant && <RestaurantEdit
-                restaurantId={restaurantId}
-                onClose={handleEditCloseModal}
-            />}
+                {showCreateRestaurant && <RestaurantCreate
+                    onClose={createRestaurantCloseHandler}
+                />}
 
-            { showDeleteRestaurant && <RestaurantDelete 
-                restaurantId={restaurantId}
-                onClose={handleDeleteCloseModal}
-            />}
+                {showEditRestaurant && <RestaurantEdit
+                    restaurantId={restaurantId}
+                    onClose={handleEditCloseModal}
+                />}
+
+                {showDeleteRestaurant && <RestaurantDelete
+                    restaurantId={restaurantId}
+                    onClose={handleDeleteCloseModal}
+                />}
+            </section>
+
         </>
     )
 }

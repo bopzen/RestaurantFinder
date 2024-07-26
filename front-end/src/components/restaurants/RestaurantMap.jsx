@@ -57,49 +57,52 @@ export default function RestaurantMap() {
         : SOFIA_COORDINATES;
 
     return (
-        <div className="big-map">
-            <div className='leaflet-container'>
-                <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
-                    <TileLayer
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    {restaurants.map(restaurant => (
-                        <Marker
-                            key={restaurant._id}
-                            position={[restaurant.geolocation.latitude, restaurant.geolocation.longitude]}
-                            icon={customIcon}
-                        >
-                            <Popup>
-                                <div className="popup-map">
-                                    <Link to={`/restaurants/${restaurant._id}`}><h3>{restaurant.name}</h3></Link>
-                                    <div className="popup-info-wrapper">
-                                        <div>
-                                            <div className="restaurant-avatar-map">
-                                                <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
+        <section className="big-map-container">
+            <div className="big-map">
+                <div className='leaflet-container'>
+                    <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
+                        <TileLayer
+                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                        {restaurants.map(restaurant => (
+                            <Marker
+                                key={restaurant._id}
+                                position={[restaurant.geolocation.latitude, restaurant.geolocation.longitude]}
+                                icon={customIcon}
+                            >
+                                <Popup>
+                                    <div className="popup-map">
+                                        <Link to={`/restaurants/${restaurant._id}`}><h3>{restaurant.name}</h3></Link>
+                                        <div className="popup-info-wrapper">
+                                            <div>
+                                                <div className="restaurant-avatar-map">
+                                                    <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
+                                                </div>
+                                                <div className="rating-map">
+                                                    <i className="fa-solid fa-star"></i>
+                                                    <i className="fa-solid fa-star"></i>
+                                                    <i className="fa-solid fa-star"></i>
+                                                    <i className="fa-solid fa-star-half-stroke"></i>
+                                                    <i className="fa-regular fa-star"></i>
+                                                </div>
                                             </div>
-                                            <div className="rating-map">
-                                                <i className="fa-solid fa-star"></i>
-                                                <i className="fa-solid fa-star"></i>
-                                                <i className="fa-solid fa-star"></i>
-                                                <i className="fa-solid fa-star-half-stroke"></i>
-                                                <i className="fa-regular fa-star"></i>
+                                            <div className="details-map">
+                                                <h4><i className="fa-solid fa-utensils"></i> {restaurant.cuisine}</h4>
+                                                <p><i className="fa-solid fa-money-bill-1-wave"></i> {restaurant.priceRange}</p>
+                                                <p><i className="fa-solid fa-location-dot"></i> {restaurant.address.city}, {restaurant.address.streetNumber} {restaurant.address.street} str.</p>
+                                                <p><i className="fa-solid fa-globe"></i><a href={restaurant.contacts.website} target="_blank" rel="noopener noreferrer"> {restaurant.contacts?.website}</a></p>
                                             </div>
-                                        </div>
-                                        <div className="details-map">
-                                            <h4><i className="fa-solid fa-utensils"></i> {restaurant.cuisine}</h4>
-                                            <p><i className="fa-solid fa-money-bill-1-wave"></i> {restaurant.priceRange}</p>
-                                            <p><i className="fa-solid fa-location-dot"></i> {restaurant.address.city}, {restaurant.address.streetNumber} {restaurant.address.street} str.</p>
-                                            <p><i className="fa-solid fa-globe"></i><a href={restaurant.contacts.website} target="_blank" rel="noopener noreferrer"> {restaurant.contacts?.website}</a></p>
                                         </div>
                                     </div>
-                                </div>
-                            </Popup>
-                        </Marker>
-                    ))}
-                </MapContainer>
+                                </Popup>
+                            </Marker>
+                        ))}
+                    </MapContainer>
+                </div>
             </div>
-        </div>
-        
+        </section>
+
+
     );
 };

@@ -397,6 +397,7 @@ main {
 
 
 .restaurant-list-section {
+  padding: 50px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -466,7 +467,9 @@ main {
   justify-content: space-between;
 
 }
-
+.restaurant-details {
+  padding: 50px;
+}
 .restaurant-details-container {
   display: flex;
   flex-direction: column;
@@ -568,6 +571,9 @@ main {
   height: 100%;
 }
 
+.big-map-container, .dashboard {
+  padding: 50px;
+}
 .big-map {
   width: 100%;
   height: 600px;
