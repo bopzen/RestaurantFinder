@@ -8,6 +8,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [email, setEmail] = useState(null);
+    const [userId, setUserId] = useState(null);
     const [token, setToken] = useState(localStorage.getItem('token') || "");
     const [role, setRole] = useState(null);
     const navigate = useNavigate();
@@ -26,11 +27,14 @@ export const AuthProvider = ({ children }) => {
         if (response.ok) {
             const data = await response.json();
             setEmail(data.email);
-            setToken(data.token);
+            setToken(data.accessToken);
             setRole(data.role);
-            localStorage.setItem('email', JSON.stringify(data.email));
+            setUserId(data._id);
+            localStorage.setItem('email', data.email);
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('role', data.role);
+            localStorage.setItem('userId', data._id);
+
             console.log(data)
             navigate("/");
         } else {
@@ -52,9 +56,11 @@ export const AuthProvider = ({ children }) => {
             setEmail(data.email);
             setToken(data.accessToken);
             setRole(data.role);
-            localStorage.setItem('email', JSON.stringify(data.email));
+            setUserId(data._id);
+            localStorage.setItem('email', data.email);
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('role', data.role);
+            localStorage.setItem('userId', data._id);
             console.log(data)
             navigate("/");
         } else {
@@ -74,16 +80,18 @@ export const AuthProvider = ({ children }) => {
             setEmail(null);
             setToken(null);
             setRole(null);
+            setUserId(null);
             localStorage.removeItem('email');
             localStorage.removeItem('token');
             localStorage.removeItem('role');
+            localStorage.removeItem('userId');
         } else {
             throw new Error('Logout failed');
         }
     };
 
     return (
-        <AuthContext.Provider value={{ email, role, token, register, login, logout }}>
+        <AuthContext.Provider value={{ email, role, token, userId, register, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

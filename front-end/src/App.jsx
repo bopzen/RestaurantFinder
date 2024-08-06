@@ -17,6 +17,8 @@ import About from './components/about/About.jsx';
 import RestaurantDetails from './components/restaurants/RestaurantDetails.jsx';
 import Map from './components/map/Map.jsx'
 import { AuthProvider } from './contexts/authContext.jsx';
+import AuthRoute from './components/auth/AuthRoute.jsx';
+import Unauthorized from './components/auth/Unauthorized.jsx';
 
 function App() {
     return (
@@ -30,13 +32,17 @@ function App() {
 
                     <Route path="/register" element={<Register />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route element={<AuthRoute />}>
+                        <Route path="/dashboard" element={<Dashboard />} />
+                    </Route>
+                    
 
                     <Route path="/restaurants" element={<RestaurantList />} />
                     <Route path="/restaurants/:id" element={<RestaurantDetails />} />
                     <Route path="/map" element={<RestaurantMap />} />
                     <Route path="/search" element={<SearchResults />} />
-
+                    
+                    <Route path="/unauthorized" element={<Unauthorized />} />
                     <Route path="/not-found" element={<NotFound />} />
                     <Route path="/*" element={<NotFound />} />
                 </Routes>
