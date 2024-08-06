@@ -33,5 +33,11 @@ Visitors on the website can search for a restaurant based on different criteria.
 - Restaurants Map page:
 ![alt text](image-2.png)
 
+- Register Page
+![alt text](image-4.png)
+
+- Login Page
+![alt text](image-5.png)
+
 - Dashboard page:
 ![alt text](image-3.png)
