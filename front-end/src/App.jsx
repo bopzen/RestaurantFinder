@@ -19,6 +19,7 @@ import Map from './components/map/Map.jsx'
 import { AuthProvider } from './contexts/authContext.jsx';
 import AuthRoute from './components/auth/AuthRoute.jsx';
 import Unauthorized from './components/auth/Unauthorized.jsx';
+import RestaurantReviews from './components/reviews/RestaurantReviews.jsx';
 
 function App() {
     return (
@@ -39,6 +40,8 @@ function App() {
 
                     <Route path="/restaurants" element={<RestaurantList />} />
                     <Route path="/restaurants/:id" element={<RestaurantDetails />} />
+                    <Route path="/restaurants/:restaurantId/reviews" element={<RestaurantReviews />} />
+
                     <Route path="/map" element={<RestaurantMap />} />
                     <Route path="/search" element={<SearchResults />} />
                     

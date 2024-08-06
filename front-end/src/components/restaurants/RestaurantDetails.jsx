@@ -1,5 +1,5 @@
 import Map from "../map/Map";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import { BASE_API_URL } from "../../constants/constants";
@@ -55,7 +55,7 @@ export default function RestaurantDetails() {
                                     <i className="fa-solid fa-star-half-stroke"></i>
                                     <i className="fa-regular fa-star"></i>
                                     <p>3.5</p>
-                                    <p>(100)</p>
+                                    <Link to={`/restaurants/${restaurant._id}/reviews`} restaurant={restaurant}><p>(100)</p></Link>
                                 </div>
                                 <div className="restaurant-info"> 
                                     <div>
