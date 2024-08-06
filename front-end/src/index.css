@@ -700,6 +700,34 @@ main {
   position: absolute;
 }
 
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 50px;
+  font-family: "Raleway"
+}
+.about h1 {
+  margin-bottom: 1rem;
+  font-family: "Dancing Script";
+  font-size: 4.5rem;
+  font-weight: 800;
+}
+.about-container {
+  display: flex;
+  gap: 2rem;
+}
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.about-image-container {
+  width: 100%;
+}
+.about-image-container img {
+  width: 100%;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
