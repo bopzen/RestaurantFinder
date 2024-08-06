@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import AuthContext from "../../contexts/authContext.jsx";
 import { BASE_API_URL, CUISINES, PRICE_RANGES } from "../../constants/constants";
 
 export default function RestaurantEdit(
-    { restaurantId, onClose }
+    { restaurantId, onClose, onSuccess }
 ) {
 
+    const { token } = useContext(AuthContext);
     const [formData, setFormData] = useState({
         name: '',
         cuisine: '',
@@ -53,7 +56,7 @@ export default function RestaurantEdit(
     useEffect(() => {
         const fetchRestaurant = async () => {
             try {
-                const response = await fetch(`${BASE_API_URL}/restaurants/${restaurantId}`);
+                const response = await fetch(`${BASE_API_URL}/data/restaurants/${restaurantId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -101,10 +104,11 @@ export default function RestaurantEdit(
         setSuccess(null);
 
         try {
-            const response = await fetch(`${BASE_API_URL}/restaurants/${restaurantId}`, {
+            const response = await fetch(`${BASE_API_URL}/data/restaurants/${restaurantId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Authorization': token
                 },
                 body: JSON.stringify(formData)
             });
@@ -115,6 +119,7 @@ export default function RestaurantEdit(
 
             const result = await response.json();
             setSuccess('Restaurant updated successfully!');
+            onSuccess();
             onClose();
         } catch (error) {
             setError(error.message);

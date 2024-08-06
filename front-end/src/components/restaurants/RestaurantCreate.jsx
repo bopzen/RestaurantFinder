@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useContext } from "react";
+import AuthContext from "../../contexts/authContext.jsx";
 import { BASE_API_URL, CUISINES, PRICE_RANGES } from "../../constants/constants";
 
 export default function RestaurantCreate(
     { onClose }
 ) {
+    const { token } = useContext(AuthContext);
+
     const [formData, setFormData] = useState({
         name: '',
         cuisine: '',
@@ -83,14 +87,16 @@ export default function RestaurantCreate(
         setSuccess(null);
 
         try {
-            const response = await fetch(`${BASE_API_URL}/restaurants`, {
+            const response = await fetch(`${BASE_API_URL}/data/restaurants`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-Authorization': token
                 },
                 body: JSON.stringify(formData)
             });
 
+            console.log(token);
             if (!response.ok) {
                 throw new Error('Network response error');
             }

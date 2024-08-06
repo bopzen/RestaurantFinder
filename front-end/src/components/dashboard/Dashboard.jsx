@@ -1,10 +1,25 @@
 import RestaurantCreate from '../restaurants/RestaurantCreate';
 import RestaurantEdit from '../restaurants/RestaurantEdit';
 import RestaurantDelete from '../restaurants/RestaurantDelete';
+import { BASE_API_URL } from "../../constants/constants";
+import { useApi } from "../../hooks/useApi";
+import { useState, useContext, useEffect } from 'react';
 import { useModal } from '../../hooks/useModal';
-import { useState } from 'react';
+import AuthContext from "../../contexts/authContext.jsx";
+
+
+
+import LoadingSpinner from '../loading-spinner/LoadingSpinner.jsx';
 
 export default function Dashboard() {
+
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const { userId } = useContext(AuthContext);
+    const [restaurantId, setRestaurantId] = useState(null);
+
+    
 
     const {
         isVisible: showCreateRestaurant,
@@ -24,7 +39,7 @@ export default function Dashboard() {
         closeModal: deleteRestaurantCloseHandler,
     } = useModal();
 
-    const [restaurantId, setRestaurantId] = useState(null);
+    
 
     const handleEditOpenModal = (id) => {
         setRestaurantId(id);
@@ -46,19 +61,66 @@ export default function Dashboard() {
         setRestaurantId(null);
     };
 
+    const handleUpdateSuccess = () => {
+        fetchData();
+    };
+
+    const handleDeleteSuccess = () => {
+        fetchData();
+    };
+
+    const urlSearchParams = new URLSearchParams({
+        where: `_ownerId="${userId}"`
+    })
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`${BASE_API_URL}/data/restaurants?${urlSearchParams.toString()}`);
+            const result = await response.json();
+            if (response.ok) {
+                setData(result);
+            } else {
+                setError(result);
+            }
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+      
+    }
+    
+    useEffect(() => {
+        fetchData();
+    }, [userId]);
+
+    if (loading) {
+        return <div><LoadingSpinner /></div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
+    if (!data || data.length == 0) {
+        return <div>No restaurant data available</div>;
+    }
+
     return (
         <>
             <section className="dashboard">
                 <h1>Dashboard</h1>
                 <div className="my-restaurants">
                     <h2>My Restaurants</h2>
-
                     <ul>
-                        <li>Restaurant 1 <button onClick={() => handleEditOpenModal('e20d1b26-4d98-4e92-aeb8-6656d4b013c7')}>Edit</button> <button className="delete-btn" onClick={() => handleDeletOpeneModal('e20d1b26-4d98-4e92-aeb8-6656d4b013c7')}>Delete</button></li>
-                        <li>Restaurant 2 <button onClick={editRestaurantClickHandler}>Edit</button> <button className="delete-btn" onClick={deleteRestaurantClickHandler}>Delete</button></li>
-                        <li>Restaurant 3 <button onClick={editRestaurantClickHandler}>Edit</button> <button className="delete-btn" onClick={deleteRestaurantClickHandler}>Delete</button></li>
+                        {data.map((restaurant) => (
+                                <li key={restaurant._id}>
+                                    {restaurant.name}
+                                    <button onClick={() => handleEditOpenModal(restaurant._id)}>Edit</button>
+                                    <button className="delete-btn" onClick={() => handleDeletOpeneModal(restaurant._id)}>Delete</button>
+                                </li>
+                            ))}
                     </ul>
-
                 </div>
 
                 <button onClick={createRestaurantClickHandler}>Add new restaurant</button>
@@ -69,11 +131,13 @@ export default function Dashboard() {
 
                 {showEditRestaurant && <RestaurantEdit
                     restaurantId={restaurantId}
+                    onSuccess={handleUpdateSuccess}
                     onClose={handleEditCloseModal}
                 />}
 
                 {showDeleteRestaurant && <RestaurantDelete
                     restaurantId={restaurantId}
+                    onSuccess={handleDeleteSuccess}
                     onClose={handleDeleteCloseModal}
                 />}
             </section>

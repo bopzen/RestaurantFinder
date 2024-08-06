@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react"
+import { useContext } from "react";
+import AuthContext from "../../contexts/authContext.jsx";
 import { BASE_API_URL } from "../../constants/constants";
 
 export default function RestaurantDelete(
-    { restaurantId, onClose }
+    { restaurantId, onClose, onSuccess }
 ) {
+    const { token } = useContext(AuthContext);
     const [restaurantName, setRestaurantName] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -12,7 +15,7 @@ export default function RestaurantDelete(
     useEffect(() => {
         const fetchRestaurant = async () => {
             try {
-                const response = await fetch(`${BASE_API_URL}/restaurants/${restaurantId}`);
+                const response = await fetch(`${BASE_API_URL}/data/restaurants/${restaurantId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -32,8 +35,12 @@ export default function RestaurantDelete(
         setSuccess(null);
 
         try {
-            const response = await fetch(`${BASE_API_URL}/restaurants/${restaurantId}`, {
-                method: 'DELETE'
+            const response = await fetch(`${BASE_API_URL}/data/restaurants/${restaurantId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Authorization': token
+                },
             });
 
             if (!response.ok) {
@@ -41,6 +48,7 @@ export default function RestaurantDelete(
             }
 
             setSuccess('Restaurant deleted successfully!');
+            onSuccess();
             onClose();
         } catch (error) {
             setError(error.message);
