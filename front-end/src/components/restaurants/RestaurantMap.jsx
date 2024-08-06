@@ -24,7 +24,7 @@ export default function RestaurantMap() {
     useEffect(() => {
         const fetchRestaurants = async () => {
             try {
-                const response = await fetch(`${BASE_API_URL}/restaurants`);
+                const response = await fetch(`${BASE_API_URL}/data/restaurants`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

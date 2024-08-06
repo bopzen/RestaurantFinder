@@ -6,7 +6,7 @@ import { BASE_API_URL } from "../../constants/constants";
 
 export default function RestaurantDetails() {
     const {id} = useParams();   
-    const {data: restaurant, loading, error } = useApi(`${BASE_API_URL}/restaurants/${id}`, {}, null);
+    const {data: restaurant, loading, error } = useApi(`${BASE_API_URL}/data/restaurants/${id}`, {}, null);
 
     if (loading) {
         return <div><LoadingSpinner /></div>;

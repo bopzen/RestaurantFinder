@@ -1,15 +1,17 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react';
+import { useContext } from 'react';
+import AuthContext from '../../contexts/authContext';
 import Logout from '../auth/Logout';
 import { useModal } from '../../hooks/useModal';
 
 export default function Header() {
+    const { email, role } = useContext(AuthContext);
 
-const {
-    isVisible: showLogout,
-    openModal: logoutClickHandler,
-    closeModal: logoutCloseHandler,
-} = useModal();
+    const {
+        isVisible: showLogout,
+        openModal: logoutClickHandler,
+        closeModal: logoutCloseHandler,
+    } = useModal();
 
     return (
         <>
@@ -35,10 +37,23 @@ const {
                 </nav>
                 <nav className='account-section'>
                     <ul>
-                        <li><Link to="/dashboard">Dashboard</Link></li>
-                        <li><Link to="/register">Register</Link></li>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><div className="link-div" onClick={logoutClickHandler}>Logout</div></li>
+                        {email ? (
+                            <>
+                                <li>Welcome, {email}</li>
+                                
+                                {role =="restaurant" &&
+                                    <li><Link to="/dashboard">Dashboard</Link></li>}
+                           
+                                <li><div className="link-div" onClick={logoutClickHandler}>Logout</div></li>
+                            </>
+                            
+                        ) : (
+                            <>
+                                <li><Link to="/register">Register</Link></li>
+                                <li><Link to="/login">Login</Link></li>
+                            </>                       
+                        )}
+                                             
                     </ul>
                 </nav>
             </header>
