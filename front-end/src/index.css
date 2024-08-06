@@ -321,9 +321,11 @@ main {
   padding: 0;
 }
 
-.create-restaurant-modal h1 {
+.create-restaurant-modal h2 {
   text-align: center;
   font-size: 1.5rem;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin-bottom: 0;
   padding: 0.5rem;
   box-shadow: 0 20px 20px -8px rgb(0 0 0 / 10%);
 }
@@ -387,7 +389,8 @@ main {
 .delete-modal {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  align-items: center;
+  padding: 3rem;
 }
 .delete-modal h1 {
   text-align: center;
@@ -637,6 +640,53 @@ main {
 .restaurant-about-container {
   padding: 2rem;
 }
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard h1 {
+  margin-bottom: 2rem;
+  font-family: "Dancing Script";
+  font-size: 4.5rem;
+  font-weight: 800;
+}
+
+.my-restaurants-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.my-restaurant-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem;
+  padding: 1rem ;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+
+.restaurant-avatar-small {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.restaurant-avatar-small img {
+  width: 100%;
+}
+
+.edit-btn, .delete-btn {
+  margin: 0;
+}
+
 
 .leaflet-container { 
   width: 100%;

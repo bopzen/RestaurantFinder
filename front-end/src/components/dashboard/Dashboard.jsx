@@ -109,18 +109,25 @@ export default function Dashboard() {
     return (
         <>
             <section className="dashboard">
-                <h1>Dashboard</h1>
                 <div className="my-restaurants">
-                    <h2>My Restaurants</h2>
-                    <ul>
+                    <h1>My Restaurants</h1>
+                    <div className='my-restaurants-container'>
                         {data.map((restaurant) => (
-                                <li key={restaurant._id}>
-                                    {restaurant.name}
-                                    <button onClick={() => handleEditOpenModal(restaurant._id)}>Edit</button>
-                                    <button className="delete-btn" onClick={() => handleDeletOpeneModal(restaurant._id)}>Delete</button>
-                                </li>
-                            ))}
-                    </ul>
+                            <div className="my-restaurant-card" key={restaurant._id}>
+                                <div className="restaurant-avatar-small">
+                                    <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
+                                </div>
+                                <div>
+                                    <h3>{restaurant.name}</h3>
+                                    <p>{restaurant.address.city}</p>
+                                    <p>{restaurant.address.streetNumber} {restaurant.address.street} str.</p>
+                                </div>
+
+                                <button className="edit-btn" onClick={() => handleEditOpenModal(restaurant._id)}>Edit</button>
+                                <button className="delete-btn" onClick={() => handleDeletOpeneModal(restaurant._id)}>Delete</button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 <button onClick={createRestaurantClickHandler}>Add new restaurant</button>

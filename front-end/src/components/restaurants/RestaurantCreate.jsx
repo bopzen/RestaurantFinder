@@ -117,7 +117,7 @@ export default function RestaurantCreate(
                 <div className="backdrop" onClick={onClose}>
                 </div>
                     <div className="modal create-restaurant-modal">
-                        <h1>Add New Restaurant</h1>
+                        <h2>Add New Restaurant</h2>
                         <form className="create-form" onSubmit={handleSubmit}>
                             <div className="create-form-top">
                                 <div className="create-form-left">

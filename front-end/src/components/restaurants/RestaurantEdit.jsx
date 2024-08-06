@@ -134,7 +134,7 @@ export default function RestaurantEdit(
                 <div className="backdrop" onClick={onClose}>
                 </div>
                     <div className="modal create-restaurant-modal">
-                        <h1>Edit Restaurant</h1>
+                        <h2>Edit Restaurant</h2>
                         <form className="create-form" onSubmit={handleSubmit}>
                             <div className="create-form-top">
                                 <div className="create-form-left">

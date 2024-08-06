@@ -63,7 +63,7 @@ export default function RestaurantDelete(
                 <div className="backdrop" onClick={onClose}>
                 </div>
                     <div className="modal delete-modal">
-                        <h1>Are you sure you want to delete {restaurantName}?</h1>
+                        <h2>Are you sure you want to delete {restaurantName}?</h2>
                             <div className="create-form-buttons">
                                 <button className="form-submit-btn" onClick={handleDelete}>Delete</button>
                                 <button className="form-cancel-btn" onClick={onClose}>Cancel</button>
