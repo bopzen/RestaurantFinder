@@ -8,8 +8,7 @@ export default function Logout(
     
     const { logout } = useContext(AuthContext);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         try {
             await logout();
             

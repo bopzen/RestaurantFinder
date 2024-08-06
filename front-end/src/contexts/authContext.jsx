@@ -9,6 +9,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [email, setEmail] = useState(null);
     const [token, setToken] = useState(localStorage.getItem('token') || "");
+    const [role, setRole] = useState(null);
     const navigate = useNavigate();
 
 
@@ -26,8 +27,10 @@ export const AuthProvider = ({ children }) => {
             const data = await response.json();
             setEmail(data.email);
             setToken(data.token);
+            setRole(data.role);
             localStorage.setItem('email', JSON.stringify(data.email));
             localStorage.setItem('token', data.accessToken);
+            localStorage.setItem('role', data.role);
             console.log(data)
             navigate("/");
         } else {
@@ -48,8 +51,10 @@ export const AuthProvider = ({ children }) => {
             const data = await response.json();
             setEmail(data.email);
             setToken(data.accessToken);
+            setRole(data.role);
             localStorage.setItem('email', JSON.stringify(data.email));
             localStorage.setItem('token', data.accessToken);
+            localStorage.setItem('role', data.role);
             console.log(data)
             navigate("/");
         } else {
@@ -68,8 +73,10 @@ export const AuthProvider = ({ children }) => {
         if (response.status === 204) {
             setEmail(null);
             setToken(null);
+            setRole(null);
             localStorage.removeItem('email');
             localStorage.removeItem('token');
+            localStorage.removeItem('role');
         } else {
             throw new Error('Logout failed');
         }
