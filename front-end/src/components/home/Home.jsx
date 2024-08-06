@@ -10,7 +10,7 @@ export default function Home() {
                     <h1>Welcome to </h1>
                     <h1>Restaurant Finder</h1>
                     <h3>Not sure where to eat today?</h3>
-                    <h3>We got you govered</h3>
+                    <h3>We got you covered</h3>
                     <h3>Choose the best restaurant around you</h3>
                 </div>
                 <div className="welcome-buttons">

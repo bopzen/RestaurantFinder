@@ -16,10 +16,11 @@ import Dashboard from './components/dashboard/Dashboard.jsx';
 import About from './components/about/About.jsx';
 import RestaurantDetails from './components/restaurants/RestaurantDetails.jsx';
 import Map from './components/map/Map.jsx'
+import { AuthProvider } from './contexts/authContext.jsx';
 
 function App() {
     return (
-        <>
+        <AuthProvider>
             <Header
             />
             <main>
@@ -41,7 +42,7 @@ function App() {
                 </Routes>
             </main>
             <Footer />
-        </>
+        </AuthProvider>
     )
 }
 

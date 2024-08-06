@@ -1,30 +1,53 @@
 import { Link } from "react-router-dom";
+import { useState, useContext  } from "react";
+import AuthContext from "../../contexts/authContext.jsx";
 
 export default function Register() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [role, setRole] = useState('restaurant');
+    const { register } = useContext(AuthContext);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await register(email, password, role);
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
+
     return (
         <div className="register-page">
             <div className="register-form-container">
                 <img className="medium-logo" src="/logos/restaurant-logo-red.png" alt="restaurant-logo-red" />
                 <h3>Register to your account</h3>
-                <form action="">
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="role">Are you a restaurant or a client?</label>
                     <div className="radio">
-                        <label for="restaurant">Restaurant</label>
-                        <input type="radio" id="restaurant" name="role" value="restaurant"/>
-                        <label for="client">Client</label>
-                        <input type="radio" id="client" name="role" value="client"/>
+                    <select value={role} onChange={(e) => setRole(e.target.value)}>
+                        <option value="client">Client</option>
+                        <option value="restaurant">Restaurant</option>
+                    </select>
                     </div>
 
-                    
-
-
                     <label htmlFor="email">Email address</label>
-                    <input type="email" id="email" name="email"/>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
 
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password"/>
-                    <label htmlFor="password">Repeat Password</label>
-                    <input type="password" id="password" name="password"/>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
                     <button type="submit">Sign Up</button>
                 </form>
