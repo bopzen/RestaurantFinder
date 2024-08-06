@@ -1322,6 +1322,7 @@
     		"35c62d76-8152-4626-8712-eeb96381bea8": {
     			email: "peter@abv.bg",
     			username: "Peter",
+                role: "restaurant",
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
     		},
     		"847ec027-f659-4086-8032-5173e2f9c93a": {
@@ -1339,6 +1340,100 @@
     	}
     };
     var seedData = {
+        restaurants: {
+            "17f250f4-466c-4607-9a33-f7273b24f1b4": {
+                _id: "17f250f4-466c-4607-9a33-f7273b24f1b4",
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Restaurant 1",
+                cuisine: "Italian",
+                priceRange: "20 to 30 BGN",
+                capacity: 100,
+                about: "Restaurant Description",
+                profilePictureURL: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D",
+                address: {
+                    city: "Sofia",
+                    street: "Bulgaria",
+                    streetNumber: "1"
+                },
+                geolocation: {
+                    latitude: 42.68148220109838, 
+                    longitude: 23.31965248147787
+                },
+                contacts: {
+                    email: "rest1@mail.com",
+                    phoneNumber: "08888881",
+                    website: "https://rest1.com"
+                },
+                extras: {
+                    hasWifi: false,
+                    hasParking: true,
+                    acceptCard: true
+                },
+                workingHours: {
+                    Monday: "11:00-23:00",
+                    Tuesday: "11:00-23:00",
+                    Wednesday: "11:00-23:00",
+                    Thursday: "11:00-23:00",
+                    Friday: "11:00-23:00",
+                    Saturday: "11:00-23:00",
+                    Sunday: "11:00-23:00"
+                },
+                picturesURL: [
+                    "/images/restaurant-interior.jpg",
+                    "/images/restaurant-interior.jpg",
+                    "/images/restaurant-interior.jpg",
+                    "/images/restaurant-interior.jpg",
+                    "/images/restaurant-interior.jpg"
+                ]
+            },
+            "rdabf7e9-23be-4031-9f14-911ab6702a9d": {
+                _id: "rdabf7e9-23be-4031-9f14-911ab6702a9d",
+                _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+                name: "Restaurant 2",
+                cuisine: "Bulgarian",
+                priceRange: "10 to 30 BGN",
+                capacity: 50,
+                about: "Restaurant Description",
+                profilePictureURL: "https://cdn.vox-cdn.com/thumbor/5d_RtADj8ncnVqh-afV3mU-XQv0=/0x0:1600x1067/1200x900/filters:focal(672x406:928x662)/cdn.vox-cdn.com/uploads/chorus_image/image/57698831/51951042270_78ea1e8590_h.7.jpg",
+                address: {
+                    city: "Sofia",
+                    street: "Pirin",
+                    streetNumber: "80"
+                },
+                geolocation: {
+                    latitude: 42.66380870038354,
+                    longitude: 23.285878981989413
+                },
+                contacts: {
+                    email: "rest2@mail.com",
+                    phoneNumber: "08888882",
+                    website: "https://rest2.com"
+                },
+                extras: {
+                    hasWifi: true,
+                    hasParking: true,
+                    acceptCard: true
+                },
+                workingHours: {
+                    Monday: "11:00-23:00",
+                    Tuesday: "11:00-23:00",
+                    Wednesday: "11:00-23:00",
+                    Thursday: "11:00-23:00",
+                    Friday: "11:00-23:00",
+                    Saturday: "11:00-23:00",
+                    Sunday: "11:00-23:00"
+                },
+                picturesURL: [
+                    "/images/restaurant-interior.jpg",
+                    "/images/restaurant-interior.jpg",
+                    "/images/restaurant-interior.jpg",
+                    "/images/restaurant-interior.jpg",
+                    "/images/restaurant-interior.jpg"
+                ]
+            }
+        },
+
+
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
