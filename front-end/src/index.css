@@ -255,7 +255,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .login-form-container form, .register-form-container form {
@@ -272,7 +271,8 @@ main {
 
 .radio {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .link-button {

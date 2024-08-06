@@ -20,7 +20,7 @@ export default function Login() {
         <div className="login-page">
             <div className="login-form-container">
                 <img className="medium-logo" src="/logos/restaurant-logo-red.png" alt="restaurant-logo-red" />
-                <h3>Login to your account</h3>
+                <h2>Login to your account</h2>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email address</label>
                     <input 

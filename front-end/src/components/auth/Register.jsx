@@ -21,7 +21,7 @@ export default function Register() {
         <div className="register-page">
             <div className="register-form-container">
                 <img className="medium-logo" src="/logos/restaurant-logo-red.png" alt="restaurant-logo-red" />
-                <h3>Register to your account</h3>
+                <h2>Register to your account</h2>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="role">Are you a restaurant or a client?</label>
                     <div className="radio">
