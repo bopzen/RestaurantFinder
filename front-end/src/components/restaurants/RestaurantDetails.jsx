@@ -159,7 +159,9 @@ export default function RestaurantDetails() {
 
                     <div className="restaurant-map-container">
                         <Map 
-                            restaurant={restaurant} 
+                            restaurant={restaurant}
+                            reviewCount={reviewCount}
+                            averageRating={averageRating}
                         />
                     </div>           
                     

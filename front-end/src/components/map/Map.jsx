@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import L from 'leaflet';
+import ShowStars from '../reviews/ShowStars';
 
 const customIcon = new L.Icon({
     iconUrl: '../logos/restaurant-logo-red.png',
@@ -11,7 +12,7 @@ const customIcon = new L.Icon({
 });
 
 export default function Map(
-    { restaurant }
+    { restaurant, reviewCount, averageRating }
 ) {
 
     const position = [restaurant.geolocation.latitude, restaurant.geolocation.longitude];
@@ -33,11 +34,7 @@ export default function Map(
                                         <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
                                     </div>
                                     <div className="rating-map">
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star-half-stroke"></i>
-                                        <i className="fa-regular fa-star"></i>
+                                        <ShowStars rating={averageRating}/>
                                     </div>
                                 </div>
 

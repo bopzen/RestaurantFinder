@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 import { BASE_API_URL, SOFIA_COORDINATES } from "../../constants/constants";
+import ShowStars from '../reviews/ShowStars';
 
 const customIcon = new L.Icon({
     iconUrl: './logos/restaurant-logo-red.png',
@@ -20,18 +21,20 @@ export default function RestaurantMap() {
     const [restaurants, setRestaurants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [loadingReviews, setLoadingReviews] = useState(true);
 
     useEffect(() => {
         const fetchRestaurants = async () => {
             try {
                 const response = await fetch(`${BASE_API_URL}/data/restaurants`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                const result = await response.json();
+                if (response.ok) {
+                    setRestaurants(result);
+                } else {
+                    setError(result);
                 }
-                const data = await response.json();
-                setRestaurants(Object.values(data));
-            } catch (error) {
-                setError(error.message);
+            } catch (err) {
+                setError(err.message);
             } finally {
                 setLoading(false);
             }
@@ -40,12 +43,45 @@ export default function RestaurantMap() {
         fetchRestaurants();
     }, []);
 
-    if (loading) {
+    useEffect(() => {
+        const fetchReviewsForRestaurants = async () => {
+            const updatedRestaurants = await Promise.all(
+                restaurants.map(async (restaurant) => {
+                    const urlSearchParams = new URLSearchParams({
+                        where: `restaurantId="${restaurant._id}"`,
+                    })
+                    try {
+                        const response = await fetch(`${BASE_API_URL}/data/reviews?${urlSearchParams.toString()}`);
+                        const reviews = await response.json();
+                        const reviewCount = reviews.length;
+                        const averageRating = reviewCount
+                            ? reviews.reduce((acc, review) => acc + review.rating, 0) / reviewCount
+                            : 0;
+                        return { ...restaurant, reviewCount, averageRating };
+                    } catch {
+                        return { ...restaurant, reviewCount: 0, averageRating: 0 };
+                    }
+                })
+            );
+            setRestaurants(updatedRestaurants);
+            setLoadingReviews(false);
+        };
+
+        if (restaurants.length > 0) {
+            fetchReviewsForRestaurants();
+        }
+    }, [restaurants.length]);
+
+    if (loading || loadingReviews) {
         return <div><LoadingSpinner /></div>;
     }
 
     if (error) {
         return <div>Error: {error}</div>;
+    }
+
+    if (!restaurants || restaurants.length === 0) {
+        return <div>No restaurant data available</div>;
     }
 
     const positions = restaurants.map(r => [Number(r.geolocation.latitude), Number(r.geolocation.longitude)]);
@@ -80,11 +116,7 @@ export default function RestaurantMap() {
                                                     <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
                                                 </div>
                                                 <div className="rating-map">
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star"></i>
-                                                    <i className="fa-solid fa-star-half-stroke"></i>
-                                                    <i className="fa-regular fa-star"></i>
+                                                    <ShowStars rating={restaurant.averageRating} />
                                                 </div>
                                             </div>
                                             <div className="details-map">
