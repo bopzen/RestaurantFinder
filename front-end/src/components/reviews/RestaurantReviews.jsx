@@ -111,6 +111,7 @@ export default function RestaurantReviews() {
         return date.toLocaleDateString('en-GB', options);
     }
 
+    const sortedReviews = reviews.sort((a, b) => b._createdOn - a._createdOn);
     
     return (
         <section className="restaurant-reviews">
@@ -119,7 +120,7 @@ export default function RestaurantReviews() {
                 <button onClick={createReviewClickHandler}>Write a review</button>
             }
             <div className="restaurant-reviews-container">
-                {reviews.map((review) => (
+                {sortedReviews.map((review) => (
                     <div className="restaurant-review-card" key={review._id}>
                         <div>
                             <b><p>{review.email}</p></b>
