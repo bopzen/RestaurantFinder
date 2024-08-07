@@ -1,5 +1,6 @@
 export const BASE_API_URL = 'https://restaurantfinder-q0o7.onrender.com';
 
+
 export const CUISINES = 
     [
         'Italian', 
