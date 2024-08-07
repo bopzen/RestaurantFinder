@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
-import { useApi } from "../../hooks/useApi";
 import { BASE_API_URL } from "../../constants/constants";
 import LoadingSpinner from "../loading-spinner/LoadingSpinner";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import AuthContext from "../../contexts/authContext.jsx";
 import ShowStars from "./ShowStars";
+import { useModal } from "../../hooks/useModal.js";
+import ReviewCreate from "./ReviewCreate.jsx";
 
 export default function RestaurantReviews() {
+    const { email, role } = useContext(AuthContext);
     const { restaurantId } = useParams();
     const [restaurant, setRestaurant] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -13,6 +16,16 @@ export default function RestaurantReviews() {
     const [reviews, setReviews] = useState([]);
     const [loadingReviews, setLoadingReviews] = useState(true);
     const [errorReviews, setErrorReviews] = useState(null);
+
+    const {
+        isVisible: showCreateReview,
+        openModal: createReviewClickHandler,
+        closeModal: createReviewCloseHandler,
+    } = useModal();
+
+    const handleCreateReviewSuccess = () => {
+        fetchReviews();
+    };
 
 
     const fetchRestaurant= async () => {
@@ -31,7 +44,6 @@ export default function RestaurantReviews() {
         }
       
     }
-
 
 
     const urlSearchParams = new URLSearchParams({
@@ -84,6 +96,8 @@ export default function RestaurantReviews() {
     if (!reviews || reviews.length == 0) {
         return <div>No reviews available</div>;
     }
+
+    const hasReviewed = reviews.some(review => review.email === email);
     
     const formatDate = (dateString) => {
         let date = new Date(dateString);
@@ -101,7 +115,9 @@ export default function RestaurantReviews() {
     return (
         <section className="restaurant-reviews">
             <h1>{restaurant.name} reviews</h1>
-            <button>Write a review</button>
+            {role =="client" && !hasReviewed &&
+                <button onClick={createReviewClickHandler}>Write a review</button>
+            }
             <div className="restaurant-reviews-container">
                 {reviews.map((review) => (
                     <div className="restaurant-review-card" key={review._id}>
@@ -116,6 +132,13 @@ export default function RestaurantReviews() {
                     </div>
                 ))}
             </div>
+
+            {showCreateReview && <ReviewCreate
+                onClose = {createReviewCloseHandler}
+                onSuccess = {handleCreateReviewSuccess}
+                restaurantId = {restaurantId}
+            />} 
+
         </section>
     )
 

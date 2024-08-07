@@ -810,6 +810,9 @@ main {
 	align-items: center;
 	padding: 50px;
 }
+.restaurant-reviews-container {
+	margin: 1rem;
+}
 
 .restaurant-reviews h1 {
 	margin-bottom: 2rem;
