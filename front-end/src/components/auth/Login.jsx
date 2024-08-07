@@ -5,6 +5,7 @@ import AuthContext from "../../contexts/authContext.jsx";
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState(''); 
     const { login } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
@@ -12,7 +13,7 @@ export default function Login() {
         try {
             await login(email, password);
         } catch (error) {
-            console.error(error.message);
+            setErrorMessage(error.message); 
         }
     };
 
@@ -47,6 +48,12 @@ export default function Login() {
                     <p>Not a member?</p>
                     <Link to="/register">Sign Up Here</Link>
                 </div>
+
+                {errorMessage && ( 
+                        <div className="error-message">
+                            {errorMessage}
+                        </div>
+                    )}
             </div>
 
         </div>

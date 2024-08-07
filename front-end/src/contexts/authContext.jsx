@@ -61,10 +61,9 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('role', data.role);
             localStorage.setItem('userId', data._id);
-            console.log(data)
             navigate("/");
         } else {
-            throw new Error('Login failed');
+            throw new Error("Login or password don't match");
         }
     };
 
