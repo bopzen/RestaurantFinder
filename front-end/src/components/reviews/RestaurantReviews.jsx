@@ -94,7 +94,15 @@ export default function RestaurantReviews() {
     }
 
     if (!reviews || reviews.length == 0) {
-        return <div>No reviews available</div>;
+        return (
+            <section className="restaurant-reviews">
+                <h1>No reviews available</h1>
+                {role =="client" &&
+                <button onClick={createReviewClickHandler}>Write a review</button>
+            }
+            </section>
+        )
+            
     }
 
     const hasReviewed = reviews.some(review => review.email === email);
