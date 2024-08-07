@@ -1438,7 +1438,7 @@
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
                 email: "peter@abv.bg",
                 rating: 5,
-    			comment: "Great restaurant!",
+    			comment: "Delicious food and friendly staff! The pasta was perfectly cooked, and the atmosphere made for a lovely evening out.",
     			restaurantId: "17f250f4-466c-4607-9a33-f7273b24f1b4",
     			_createdOn: 1614260681375,
     			_id: "0a272c58-b7ea-4e09-a000-7ec988248f61"
@@ -1447,7 +1447,7 @@
     			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
                 email: "george@abv.bg",
                 rating: 4,
-    			comment: "Nice restaurant!",
+    			comment: "Fantastic dining experience! The seafood was incredibly fresh, and the dessert selection was delightful. Highly recommend for a special night.",
     			restaurantId: "17f250f4-466c-4607-9a33-f7273b24f1b4",
     			_createdOn: 1614260681375,
     			_id: "3987279d-0ad4-4afb-8ca9-5b256ae3b298"
