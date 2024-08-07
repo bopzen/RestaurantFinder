@@ -1344,11 +1344,11 @@
             "17f250f4-466c-4607-9a33-f7273b24f1b4": {
                 _id: "17f250f4-466c-4607-9a33-f7273b24f1b4",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-                name: "Restaurant 1",
+                name: "Trattoria Bella Vita",
                 cuisine: "Italian",
                 priceRange: "20 to 30 BGN",
                 capacity: 100,
-                about: "Restaurant Description",
+                about: "Trattoria Bella Vita transports diners straight to Italy with its warm, rustic charm and authentic flavors. This family-owned gem features an inviting atmosphere adorned with exposed brick walls, vintage Italian posters, and soft candlelight, creating the perfect backdrop for a romantic dinner or a joyful family gathering. The menu boasts a delightful array of traditional Italian dishes, from handmade pasta to wood-fired pizzas. Signature offerings include the rich and creamy fettuccine Alfredo and the classic Margherita pizza, topped with fresh basil and buffalo mozzarella. For those seeking something sweet, the homemade tiramisu is a must-try! The extensive wine list showcases Italian varietals that perfectly complement each dish. With attentive and friendly service, Trattoria Bella Vita ensures that every visit feels like a special occasion, inviting you to savor the essence of Italy, one delicious bite at a time.",
                 profilePictureURL: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D",
                 address: {
                     city: "Sofia",
@@ -1389,11 +1389,11 @@
             "rdabf7e9-23be-4031-9f14-911ab6702a9d": {
                 _id: "rdabf7e9-23be-4031-9f14-911ab6702a9d",
                 _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-                name: "Restaurant 2",
+                name: "Balkan Delights",
                 cuisine: "Bulgarian",
                 priceRange: "10 to 30 BGN",
                 capacity: 50,
-                about: "Restaurant Description",
+                about: "Balkan Delights offers an authentic taste of Bulgaria in a cozy and welcoming setting. The restaurant is adorned with traditional decor, featuring vibrant textiles and rustic wooden accents that create an inviting atmosphere. The menu is a celebration of Bulgarian cuisine, showcasing hearty dishes made from fresh, local ingredients. Diners can indulge in mouthwatering options like the famous Shopska salad, a refreshing mix of tomatoes, cucumbers, and feta cheese, or the slow-cooked kavarma, a savory meat stew bursting with flavors. For those with a sweet tooth, the homemade baklava is a delightful treat that shouldn’t be missed. The friendly staff are eager to share their knowledge of Bulgarian culture and cuisine, making every meal feel like a warm family gathering. Whether you’re exploring new flavors or reminiscing about familiar tastes, Balkan Delights promises a unique culinary journey that celebrates the heart of Bulgarian heritage.",
                 profilePictureURL: "https://cdn.vox-cdn.com/thumbor/5d_RtADj8ncnVqh-afV3mU-XQv0=/0x0:1600x1067/1200x900/filters:focal(672x406:928x662)/cdn.vox-cdn.com/uploads/chorus_image/image/57698831/51951042270_78ea1e8590_h.7.jpg",
                 address: {
                     city: "Sofia",
