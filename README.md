@@ -2,6 +2,9 @@
 
 # This is my defense project for SoftUni's React Course.
 
+The project is deployed Render.com and you can access it from the following link:
+https://restaurantfinder-fe.onrender.com/
+
 **RestaurantFinder is a web application developed with React. The main purpose of the application is to show a catalog of restaurants in the area, so the client can choose a restaurant to visit.**
 
 
