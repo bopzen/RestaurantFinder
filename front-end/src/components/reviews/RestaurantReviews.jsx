@@ -31,12 +31,10 @@ export default function RestaurantReviews() {
       
     }
 
-    
-
 
 
     const urlSearchParams = new URLSearchParams({
-        where: `restaurantId="${restaurantId}"`
+        where: `restaurantId="${restaurantId}"`,
     })
 
     const fetchReviews = async () => {
@@ -70,7 +68,7 @@ export default function RestaurantReviews() {
         return <div>Error: {error.message}</div>;
     }
 
-    if (!restaurant) {
+    if (!restaurant || restaurant.length == 0) {
         return <div>No restaurant data available</div>;
     }
 
@@ -82,7 +80,7 @@ export default function RestaurantReviews() {
         return <div>Error: {errorReviews.message}</div>;
     }
 
-    if (!reviews) {
+    if (!reviews || reviews.length == 0) {
         return <div>No reviews available</div>;
     }
     
@@ -94,9 +92,9 @@ export default function RestaurantReviews() {
             <ul>
                 {reviews.map((review) => (
                     <li key={review._id}>
-                        <h3>Comment: {review.comment}</h3>
+                        <h4>Comment: {review.comment}</h4>
                         <p>Rating: {review.rating}</p>
-                        <p>By: {review._ownerId}</p>
+                        <p>By: {review.email}</p>
                     </li>
                 ))}
             </ul>

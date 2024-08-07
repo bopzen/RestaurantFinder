@@ -1,12 +1,65 @@
 import Map from "../map/Map";
 import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
 import { useApi } from '../../hooks/useApi';
 import LoadingSpinner from '../loading-spinner/LoadingSpinner';
 import { BASE_API_URL } from "../../constants/constants";
+import ShowStars from "../reviews/ShowStars";
 
 export default function RestaurantDetails() {
     const {id} = useParams();   
-    const {data: restaurant, loading, error } = useApi(`${BASE_API_URL}/data/restaurants/${id}`, {}, null);
+
+    const [restaurant, setRestaurant] = useState(null);
+    const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchRestaurant = async () => {
+            try {
+                const response = await fetch(`${BASE_API_URL}/data/restaurants/${id}`);
+                const result = await response.json();
+                if (response.ok) {
+                    setRestaurant(result);
+                } else {
+                    setError(result);
+                }
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        const fetchReviews = async () => {
+            const urlSearchParams = new URLSearchParams({
+                where: `restaurantId="${id}"`,
+            })
+            try {             
+                const response = await fetch(`${BASE_API_URL}/data/reviews?${urlSearchParams.toString()}`);
+                const result = await response.json();
+                if (response.ok) {
+                    setReviews(result);
+                } else {
+                    setError(result);
+                }
+            } catch (err) {
+                setError(err.message);
+            }
+        };
+
+        fetchRestaurant();
+        fetchReviews();
+    }, [id]);
+
+    const calculateAverageRating = () => {
+        if (reviews.length === 0) return 0;
+        const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+        return totalRating / reviews.length;
+    };
+
+    const averageRating = calculateAverageRating();
+    const reviewCount = reviews.length;
 
     if (loading) {
         return <div><LoadingSpinner /></div>;
@@ -16,7 +69,7 @@ export default function RestaurantDetails() {
         return <div>Error: {error.message}</div>;
     }
 
-    if (!restaurant || Object.keys(restaurant) == 0) {
+    if (!restaurant) {
         return <div>No restaurant data available</div>;
     }
 
@@ -49,13 +102,9 @@ export default function RestaurantDetails() {
                                 <p>{restaurant.address.city}, {restaurant.address.streetNumber} {restaurant.address.street} str.</p>
                                 
                                 <div className="rating-details">
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star"></i>
-                                    <i className="fa-solid fa-star-half-stroke"></i>
-                                    <i className="fa-regular fa-star"></i>
-                                    <p>3.5</p>
-                                    <Link to={`/restaurants/${restaurant._id}/reviews`} restaurant={restaurant}><p>(100)</p></Link>
+                                    <ShowStars rating={averageRating} />
+                                    <p>{averageRating.toFixed(1)}</p>
+                                    <Link to={`/restaurants/${restaurant._id}/reviews`} restaurant={restaurant}><p>({reviewCount})</p></Link>
                                 </div>
                                 <div className="restaurant-info"> 
                                     <div>

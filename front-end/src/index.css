@@ -444,12 +444,21 @@ main {
 }
 
 .rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
   width: 240px;
   text-align: center;
   font-size: 14px;
   color: rgb(255, 208, 0);
   padding: 8px ;
   box-shadow: 0 20px 12px -15px rgb(0 0 0 / 10%);
+}
+.rating-stats {
+  display: flex;
+  gap: 6px;
+  color: #213547;
 }
 
 .restaurant-info {
