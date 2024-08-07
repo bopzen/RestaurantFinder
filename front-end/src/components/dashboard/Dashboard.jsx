@@ -117,14 +117,18 @@ export default function Dashboard() {
                                 <div className="restaurant-avatar-small">
                                     <img src={restaurant.profilePictureURL} alt="restaurant-profile-picture" />
                                 </div>
-                                <div>
-                                    <h3>{restaurant.name}</h3>
-                                    <p>{restaurant.address.city}</p>
-                                    <p>{restaurant.address.streetNumber} {restaurant.address.street} str.</p>
+                                <div className='restaurant-right'>
+                                    <div>
+                                        <h3>{restaurant.name}</h3>
+                                        <p>{restaurant.address.city}</p>
+                                        <p>{restaurant.address.streetNumber} {restaurant.address.street} str.</p>
+                                    </div>
+                                    <div className='btns'>
+                                        <button className="edit-btn" onClick={() => handleEditOpenModal(restaurant._id)}>Edit</button>
+                                        <button className="delete-btn" onClick={() => handleDeletOpeneModal(restaurant._id)}>Delete</button>
+                                    </div>
                                 </div>
 
-                                <button className="edit-btn" onClick={() => handleEditOpenModal(restaurant._id)}>Edit</button>
-                                <button className="delete-btn" onClick={() => handleDeletOpeneModal(restaurant._id)}>Delete</button>
                             </div>
                         ))}
                     </div>

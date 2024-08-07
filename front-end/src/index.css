@@ -748,12 +748,23 @@ main {
 .my-restaurant-card {
 	display: flex;
 	align-items: center;
+	justify-content: flex-start;
+	width: 600px;
 	gap: 1rem;
 	margin: 0.5rem;
 	padding: 1rem;
 	background-color: white;
 	border-radius: 6px;
 	box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+}
+.restaurant-right {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+}
+.btns button {
+	margin: 0.5rem;
 }
 
 .restaurant-avatar-small {
