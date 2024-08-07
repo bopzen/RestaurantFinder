@@ -818,7 +818,10 @@ main {
 .restaurant-review-card {
 	display: flex;
 	justify-content: space-between;
-	width: 600px;
+	align-items: center;
+	gap: 1rem;
+	width: 800px;
+	min-height: 120px;
 	margin: 0.5rem;
 	padding: 1rem 2rem;
 	background-color: white;
@@ -827,6 +830,10 @@ main {
 }
 .restaurant-review-card div {
 	font-size: 14px;
+	width: 200px
+}
+.fa-quote-left, .fa-quote-right {
+	color:rgb(160, 160, 160)
 }
 
 @media (prefers-color-scheme: light) {

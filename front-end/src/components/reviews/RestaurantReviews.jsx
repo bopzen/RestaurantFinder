@@ -89,19 +89,19 @@ export default function RestaurantReviews() {
         let date = new Date(dateString);
         const options = {
             year: 'numeric',
-            month: 'long', 
+            month: 'short', 
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
-    };
-    return date.toLocaleDateString('en-BG', options);
+        };
+        return date.toLocaleDateString('en-GB', options);
     }
 
     
-
     return (
         <section className="restaurant-reviews">
             <h1>{restaurant.name} reviews</h1>
+            <button>Write a review</button>
             <div className="restaurant-reviews-container">
                 {reviews.map((review) => (
                     <div className="restaurant-review-card" key={review._id}>
@@ -110,7 +110,9 @@ export default function RestaurantReviews() {
                             <ShowStars rating={review.rating}/>
                             <p>{formatDate(review._createdOn)}</p>
                         </div>   
-                        <b><p>{review.comment}</p></b>
+                        <p>
+                            <i class="fa-solid fa-quote-left"></i> {review.comment} <i class="fa-solid fa-quote-right"></i>
+                        </p>
                     </div>
                 ))}
             </div>
