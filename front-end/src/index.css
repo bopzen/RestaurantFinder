@@ -770,6 +770,15 @@ main {
 	position: absolute;
 }
 
+.logout-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.logout-modal h1 {
+	font-size: 2.5rem;
+	margin-bottom: 1rem;
+}
 .about {
 	display: flex;
 	flex-direction: column;
