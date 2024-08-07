@@ -44,3 +44,9 @@ Visitors on the website can search for a restaurant based on different criteria.
 
 - Dashboard page:
 ![alt text](image-3.png)
+
+- Add new restaurant page:
+![alt text](image-8.png)
+
+- Restaurant Reviews page:
+![alt text](image-7.png)
