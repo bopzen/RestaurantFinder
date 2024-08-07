@@ -365,7 +365,7 @@ export default function RestaurantCreate(
                                 </label>
                             </div>
                             <div className="create-form-buttons">
-                                <button className="form-submit-btn"type="submit" disabled={loading}>
+                                <button className="form-submit-btn" type="submit" disabled={loading}>
                                     {loading ? 'Adding...' : 'Add Restaurant'}
                                 </button>
                                 <button className="form-cancel-btn" onClick={onClose}>Cancel</button>

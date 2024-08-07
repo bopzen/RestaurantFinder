@@ -63,11 +63,11 @@ export default function ReviewCreate({ restaurantId, onClose, onSuccess }) {
         <>
             <div className="overlay">
                 <div className="backdrop" onClick={onClose}></div>
-                <div className="modal">
-                    <h1>Create Review</h1>
+                <div className="modal create-review-modal">
+                    <h2>Create Review</h2>
                     {error && <p className="error">{error}</p>}
                     {success && <p className="success">{success}</p>}
-                    <form onSubmit={handleSubmit}>
+                    <form className="create-review-form" onSubmit={handleSubmit}>
                         <label>
                             Rating:
                             <select
@@ -87,18 +87,22 @@ export default function ReviewCreate({ restaurantId, onClose, onSuccess }) {
                         <label>
                             Comment:
                             <textarea
+                                className="review-textarea"
                                 name="comment"
                                 value={formData.comment}
                                 onChange={handleChange}
                                 required
                             />
                         </label>
-                        <button type="submit" disabled={loading}>
-                            {loading ? 'Posting...' : 'Post'}
-                        </button>
-                        <button type="button" onClick={onClose}>
-                            Cancel
-                        </button>
+                        <div className="create-form-buttons">
+                            <button className="form-submit-btn" type="submit" disabled={loading}>
+                                {loading ? 'Posting...' : 'Post'}
+                            </button>
+                            <button className="form-cancel-btn" type="button" onClick={onClose}>
+                                Cancel
+                            </button>
+                        </div>
+                        
                     </form>
                 </div>
             </div>
